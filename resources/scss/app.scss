@@ -1,5 +1,6 @@
 /* customize bootstrap by overriding sass variables */
 
 
+$primary: hsl(216 100% 62% / 1);
 $font-family-sans-serif: 'Barlow', 'sans-serif';
 @import "~bootstrap/scss/bootstrap";
