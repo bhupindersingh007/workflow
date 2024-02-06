@@ -2,7 +2,9 @@
 <div class="col-10 col-md-3 col-xl-2 px-0  border-end bg-white position-fixed d-print-none
     top-0 left-0 h-100 overflow-auto sidebar" id="sidebar" style="z-index: 100;">
     
-    <h5 class="px-3 my-3" href="{{ route('dashboard') }}">{{ config('app.name') }}</h5>
+    <h5 class="px-3 my-3 fw-bold" href="{{ route('dashboard') }}" style="letter-spacing: 0.08rem">
+      <span class="text-primary">WORK</span>FLOW
+    </h5>
 
     <div class="list-group rounded-0">
       <a href="#" class="list-group-item list-group-item-action active border-0 d-flex align-items-center">

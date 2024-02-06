@@ -2,7 +2,9 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-light py-2">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name') }}</a>
+            <a class="navbar-brand fw-bold" href="{{ route('home') }}" style="letter-spacing: 0.08rem">
+            <span class="text-primary">WORK</span>FLOW
+            </a>
             <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-nav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
