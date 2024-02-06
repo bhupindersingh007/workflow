@@ -1,6 +1,12 @@
 /* customize bootstrap by overriding sass variables */
 
 
-$primary: hsl(216 100% 62% / 1);
+$primary: #3d8bff;
 $font-family-sans-serif: 'Barlow', 'sans-serif';
 @import "~bootstrap/scss/bootstrap";
+
+.btn,
+.btn:hover,
+.btn:active {
+    color: #fff;
+}
