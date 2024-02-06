@@ -5,8 +5,8 @@ $primary: #3d8bff;
 $font-family-sans-serif: 'Barlow', 'sans-serif';
 @import "~bootstrap/scss/bootstrap";
 
-.btn,
-.btn:hover,
-.btn:active {
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active {
     color: #fff;
 }
