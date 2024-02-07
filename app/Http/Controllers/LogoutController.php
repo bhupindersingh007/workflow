@@ -14,7 +14,7 @@ class LogoutController extends Controller
 
         if(!$request->isMethod('POST')){
 
-            return redirect()->route('home');
+            return redirect()->route('login.create');
         }
         
         auth()->logout();
@@ -23,7 +23,7 @@ class LogoutController extends Controller
      
         $request->session()->regenerateToken();
      
-        return redirect()->route('home');
+        return redirect()->route('login.create');
 
     }
 }
