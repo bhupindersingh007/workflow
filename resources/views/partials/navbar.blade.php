@@ -9,7 +9,7 @@
     </button>
     <div class="dropdown ms-auto">
       <button class="btn py-0 d-flex align-items-center" id="logout-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        <small class="me-2 text-muted">Neil Armstrong</small>
+        <small class="me-2 text-muted">{{ auth()->user()->fullName }}</small>
         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </button>
