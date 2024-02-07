@@ -14,12 +14,30 @@
             </button>
             <div class="collapse navbar-collapse" id="navbar-nav">
                 <ul class="navbar-nav ms-auto">
+                   
+                    {{-- login & logout --}}
+                    
+                    @guest
                     <li class="nav-item">
                         <a class="nav-link me-lg-2" href="{{ route('login.create') }}">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('register.create') }}">Register</a>
                     </li>
+                    @endguest
+
+                    {{-- dashboard --}}
+
+                    @auth
+                    <li class="nav-item">
+    
+                        <a class="btn btn-primary d-flex align-items-center" href="{{ route('dashboard') }}">
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                               <span class="ms-1">Dashboard</span>
+                        </a>
+                    </li>
+                    @endauth
+
                 </ul>
             </div>
         </div>
