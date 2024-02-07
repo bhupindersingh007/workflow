@@ -14,7 +14,11 @@
         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </button>
       <div class="dropdown-menu dropdown-menu-right small" aria-labelledby="logout-dropdown">
-        <a class="dropdown-item" href="#">Logout</a>
+        <form class="dropdown-item" action="{{ route('logout') }}" method="POST">
+          @csrf
+          <button type="submit" class="dropdown-item p-0">Logout</button>
+        </form>
+
         <a class="dropdown-item" href="#">Settings</a>
       </div>
     </div>
