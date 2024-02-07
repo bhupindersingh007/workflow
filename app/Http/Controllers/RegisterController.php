@@ -26,7 +26,24 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
 
-       //
+        $request->validate([
+            'first_name' => 'required|max:50',
+            'last_name' => 'required|max:50',
+            'email' => 'required|email|unique:users,email|max:50|',
+            'password' => 'required|min:5|max:25|confirmed',
+        ]);
+
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+
+        auth()->login($user);
+        
+        $request->session()->regenerate();
+        return redirect()->intended();
 
     }
 
