@@ -29,6 +29,9 @@
 
     @include('partials.footer')
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.11.0/sha256.min.js"></script>
+    @stack('scripts')
+
 </body>
 
 </html>

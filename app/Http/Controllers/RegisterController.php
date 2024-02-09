@@ -26,6 +26,10 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
 
+        if($request->ajax()){
+            return null;
+        }
+
         $request->validate([
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
