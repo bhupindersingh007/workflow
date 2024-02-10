@@ -26,10 +26,6 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
 
-        if($request->ajax()){
-            return null;
-        }
-
         $request->validate([
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
@@ -47,7 +43,7 @@ class RegisterController extends Controller
         auth()->login($user);
         
         $request->session()->regenerate();
-        return redirect()->intended();
+        return redirect()->route('dashboard');
 
     }
 

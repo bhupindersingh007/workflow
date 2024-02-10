@@ -48,8 +48,8 @@
       </button>
       <div class="collapse" id="purchase-collapse" data-bs-parent="#sidebar">
         <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action border-0 ps-4">Update Profile</a>
-          <a href="#" class="list-group-item list-group-item-action border-0 ps-4">Change Password</a>
+          <a href="{{ route('update.account.create') }}" class="list-group-item list-group-item-action border-0 ps-4">Update Account</a>
+          <a href="{{ route('change.password.create') }}" class="list-group-item list-group-item-action border-0 ps-4">Change Password</a>
         </div>
       </div>
     </div>
