@@ -5,6 +5,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UpdateAccountController;
+use App\Http\Controllers\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,8 @@ Route::match(['get', 'post'], 'logout', LogoutController::class)->name('logout')
 
 Route::get('dashboard', DashboardController::class)->name('dashboard')->middleware('auth');
 
+Route::get('update-account', [UpdateAccountController::class, 'create'])->name('update.account.create');
+Route::post('update-account', [UpdateAccountController::class, 'store'])->name('update.account.store');
+
+Route::get('change-password', [ChangePasswordController::class, 'create'])->name('change.password.create');
+Route::post('change-password', [ChangePasswordController::class, 'store'])->name('change.password.store');
