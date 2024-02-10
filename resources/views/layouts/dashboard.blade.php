@@ -42,6 +42,8 @@
 
 <body>
 
+    @include('partials.success')
+
     @include('partials.sidebar')
 
     <div class="col-md-9 col-xl-10 px-0 ms-md-auto">
