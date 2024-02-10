@@ -25,11 +25,6 @@ class LoginController extends Controller
     public function store(Request $request)
     {
 
-        if($request->ajax()){
-            return null;
-        }
-
-
         $credentials = $request->validate([
             'email' => 'email|required',
             'password' => 'required'
