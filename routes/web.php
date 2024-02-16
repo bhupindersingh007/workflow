@@ -7,6 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UpdateAccountController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,5 @@ Route::post('update-account', [UpdateAccountController::class, 'store'])->name('
 
 Route::get('change-password', [ChangePasswordController::class, 'create'])->name('change.password.create');
 Route::post('change-password', [ChangePasswordController::class, 'store'])->name('change.password.store');
+
+Route::resource('projects', ProjectController::class);
