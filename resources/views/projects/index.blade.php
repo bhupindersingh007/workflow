@@ -24,7 +24,7 @@
 </form>
   
 
-@if ($projects)
+@if ($projects->count() > 0)
   <div class="table-responsive">
     <table class="table table-striped border">
         <thead>
@@ -61,11 +61,11 @@
       </table>
   </div>
 
+    {{-- Pagination --}}
     {{ $projects->links() }}
   
-
 @else
-    <p>No Projects</p>
+    <div class="alert alert-primary">No Projects.</div>
 @endif
 
 
