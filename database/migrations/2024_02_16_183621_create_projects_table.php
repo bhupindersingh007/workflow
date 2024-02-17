@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->foreignId('owner_id')->references('id')->on('users');
+            $table->foreignId('created_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

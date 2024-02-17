@@ -41,7 +41,7 @@ class ProjectController extends Controller
         ]);
 
         $validatedData['slug'] = Str::slug($request->title); 
-        $validatedData['owner_id'] = auth()->id(); 
+        $validatedData['created_by'] = auth()->id(); 
 
         Project::create($validatedData);
 
