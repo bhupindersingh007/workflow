@@ -25,7 +25,7 @@ class Project extends Model
     public function scopeSearch(Builder $query, string $search): void
     {
 
-        $query->where('title', 'LIKE', "%$search%")->orWhere('description', 'LIKE', "%$search%");
+        $query->where('title', 'LIKE', "%$search%");
 
     }
 
