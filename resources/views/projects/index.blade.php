@@ -7,15 +7,16 @@
 </header>
 
 
-<div class="col-md-6 col-lg-12 mb-3 ms-auto">
-  <form class="d-flex align-items-center" method="GET" action="{{ route('projects.index') }}">
-    <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}">
-      <button class="btn btn-primary ms-1 d-flex align-items-center py-2">
-        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      </button>
-  </form>
+<form class="d-flex align-items-center mb-3" action="{{ route('projects.index') }}" method="GET" action="{{ route('projects.index') }}">
   
-</div>
+  <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}">
+    
+  <button class="btn btn-primary ms-1 d-flex align-items-center py-2">
+    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+  </button>
+
+</form>
+  
 
 @if ($projects)
   <div class="table-responsive">

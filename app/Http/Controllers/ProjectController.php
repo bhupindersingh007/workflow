@@ -10,10 +10,12 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $projects = Project::paginate(20);
+        $projects = $request->filled('search')
+            ? Project::search($request->search)->paginate(20)->withQueryString()
+            : Project::paginate(20);
 
         return view('projects.index', ['projects' => $projects]);
     }
