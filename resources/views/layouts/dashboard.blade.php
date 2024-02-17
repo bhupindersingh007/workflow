@@ -42,8 +42,6 @@
 
 <body>
 
-    @include('partials.success')
-
     @include('partials.sidebar')
 
     <div class="col-md-9 col-xl-10 px-0 ms-md-auto">
@@ -51,6 +49,9 @@
         @include('partials.navbar')
 
         <main class="p-4 min-vh-100">
+
+            @include('partials.success')
+
             @yield('content')
         </main>
 
