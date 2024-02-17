@@ -39,13 +39,21 @@
           @foreach ($projects as $project)
             <tr>
                 <td>{{ $project->title }}</td>
-                <td>1</td>
-                <td>3</td>
-                <td>2</td>
+                <td>{{ 0 }}</td>
+                <td>{{ 0 }}</td>
+                <td>{{ 0 }}</td>
                 <td>
                   <button type="button" class="btn btn-sm btn-primary">View</button>
                   <a href="{{ route('projects.edit', ['project' => $project]) }}" class="btn btn-sm btn-success">Edit</a>
-                  <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                  
+                  {{-- Delete Project --}}
+                  <form action="{{ route('projects.destroy', ['project'=> $project]) }}" method="POST" 
+                  class="d-inline-block" onsubmit="confirm('Are you sure?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                  </form>
+
                 </td>
             </tr>
           @endforeach
