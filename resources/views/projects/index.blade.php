@@ -22,7 +22,8 @@
   
 </div>
 
-<div class="table-responsive">
+@if ($projects)
+  <div class="table-responsive">
     <table class="table table-striped border">
         <thead>
             <th>Title</th>
@@ -33,10 +34,10 @@
           </tr>
         </thead>
         <tbody>
-          @foreach (range(1, 5) as $item)
+          @foreach ($projects as $project)
             <tr>
-                <td>Task {{ $item }}</td>
-                <td>5</td>
+                <td>{{ $project->title }}</td>
+                <td>1</td>
                 <td>3</td>
                 <td>2</td>
                 <td>
@@ -48,7 +49,12 @@
           @endforeach
         </tbody>
       </table>
-</div>
+  </div>
+
+@else
+    <p>No Projects</p>
+@endif
+
 
 <nav class="d-flex justify-content-end">
   <ul class="pagination">
@@ -62,7 +68,7 @@
 
 
 <form action="{{ route('projects.store') }}" method="POST">
-{{-- Modal --}}
+{{-- Create Modal --}}
 <div class="modal fade" id="create-project-modal" tabindex="-1" aria-labelledby="create-project-modal-label" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
