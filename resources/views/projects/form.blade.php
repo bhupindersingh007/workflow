@@ -28,12 +28,15 @@
     tinymce.init({
           promotion: false,
           selector: '[name=description]',
-          height: 300,
+          height: 240,
           branding: false,
+          statusbar: false,
+          menubar : false,
           plugins: 'lists link image paste table fullscreen',
-          toolbar: `undo redo | bold italic underline | alignleft
-                  aligncenter alignright alignjustify | bullist numlist outdent indent 
-                  | table |link image | fullscreen`,
+          toolbar: `undo redo | bold italic underline | formatselect 
+                    | alignleft aligncenter alignright alignjustify 
+                    | bullist numlist outdent indent 
+                    | table |link image | fullscreen`,
       });
 
   </script>    
