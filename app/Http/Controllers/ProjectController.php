@@ -35,7 +35,7 @@ class ProjectController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:100',
-            'description' => 'nullable|max:5000',
+            'description' => 'nullable|max:65000',
         ]);
 
         $validatedData['owner_id'] = auth()->id(); 
@@ -69,7 +69,7 @@ class ProjectController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:100',
-            'description' => 'nullable|max:5000',
+            'description' => 'nullable|max:65000',
         ]);
 
         $project->update($validatedData);

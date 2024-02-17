@@ -18,3 +18,24 @@
 
 {{-- Form Mode Edit And Save --}}
 <button type="submit" class="btn btn-primary">{{ $mode == 'create' ? 'Save' : 'Edit' }}</button>
+
+
+@push('scripts')
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.9.2/tinymce.min.js"></script>
+  <script>
+    
+    tinymce.init({
+          promotion: false,
+          selector: '[name=description]',
+          height: 300,
+          branding: false,
+          plugins: 'lists link image paste table fullscreen',
+          toolbar: `undo redo | bold italic underline | alignleft
+                  aligncenter alignright alignjustify | bullist numlist outdent indent 
+                  | table |link image | fullscreen`,
+      });
+
+  </script>    
+
+@endpush
