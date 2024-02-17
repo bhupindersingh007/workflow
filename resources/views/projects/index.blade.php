@@ -61,6 +61,7 @@
 </nav>
 
 
+<form action="{{ route('projects.store') }}" method="POST">
 {{-- Modal --}}
 <div class="modal fade" id="create-project-modal" tabindex="-1" aria-labelledby="create-project-modal-label" aria-hidden="true">
     <div class="modal-dialog">
@@ -70,24 +71,34 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form>
+           
+                @csrf
+
                 <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" placeholder="Title">
+                  <input type="text" class="form-control" id="title" placeholder="Title" name="title">
+                  @error('title')
+                  <small class="text-danger">{{ $message }}</small>
+                  @enderror
                 </div>
                 <div class="mb-3">
                   <label for="description" class="form-label">Description</label>
-                  <textarea class="form-control" id="description" rows="3" placeholder="Description"></textarea>
+                  <textarea class="form-control" id="description" rows="3" placeholder="Description" name="description"></textarea>
+                  @error('description')
+                  <small class="text-danger">{{ $message }}</small>
+                  @enderror
                 </div>
-              </form>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">&times; Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
   </div>
+
+</form>
+
 
   {{-- Edit Modal --}}
 <div class="modal fade" id="edit-project-modal" tabindex="-1" aria-labelledby="edit-project-modal-label" aria-hidden="true">

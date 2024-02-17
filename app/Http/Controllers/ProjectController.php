@@ -28,7 +28,17 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'description' => 'nullable|max:5000',
+        ]);
+
+        $validatedData['owner_id'] = auth()->id(); 
+
+        Project::create($validatedData);
+
+        return redirect()->route('projects.index')->with('success', 'Project is Created.');
+
     }
 
     /**
