@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -34,10 +36,11 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|max:100',
+            'title' => 'required|max:100|unique:projects,title',
             'description' => 'nullable|max:65000',
         ]);
 
+        $validatedData['slug'] = Str::slug($request->title); 
         $validatedData['owner_id'] = auth()->id(); 
 
         Project::create($validatedData);
@@ -68,7 +71,7 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $validatedData = $request->validate([
-            'title' => 'required|max:100',
+            'title' => 'required|max:100|'. Rule::unique('projects')->ignore($project),
             'description' => 'nullable|max:65000',
         ]);
 
