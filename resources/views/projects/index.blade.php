@@ -37,7 +37,7 @@
                 <td>2</td>
                 <td>
                   <button type="button" class="btn btn-sm btn-primary">View</button>
-                  <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#edit-project-modal">Edit</button>
+                  <a href="{{ route('projects.edit', ['project' => $project]) }}" class="btn btn-sm btn-success">Edit</a>
                   <button type="button" class="btn btn-sm btn-danger">Delete</button>
                 </td>
             </tr>
