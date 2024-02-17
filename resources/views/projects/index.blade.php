@@ -3,12 +3,7 @@
 
 <header class="d-flex justify-content-between align-items-center mb-4">
     <h5 class="mb-0">Projects</h5>
-    
-    <div>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-project-modal">
-        <span class="fw-bold">&plus;</span> Project
-    </button>
-    </div>
+    <a class="btn btn-primary" href="{{ route('projects.create') }}">Project</a>
 </header>
 
 
@@ -72,22 +67,6 @@
         </div>
         <div class="modal-body">
            
-                @csrf
-
-                <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" placeholder="Title" name="title">
-                  @error('title')
-                  <small class="text-danger">{{ $message }}</small>
-                  @enderror
-                </div>
-                <div class="mb-3">
-                  <label for="description" class="form-label">Description</label>
-                  <textarea class="form-control" id="description" rows="3" placeholder="Description" name="description"></textarea>
-                  @error('description')
-                  <small class="text-danger">{{ $message }}</small>
-                  @enderror
-                </div>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">&times; Close</button>
