@@ -30,7 +30,7 @@
     </a>
     @endif
 
-    <a class="btn btn-primary ms-1" href="{{ route('projects.create') }}">Project</a>
+    <a class="btn btn-primary ms-1" href="{{ route('projects.create') }}">&plus; Project</a>
 
 
   </form>
