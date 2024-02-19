@@ -7,7 +7,7 @@
     <h5 class="mb-0">{{ $project->title }}</h5>
   
     {{-- Tasks Search --}}
-    <form class="d-flex align-items-center action="{{ route('projects.tasks', ['project' => $project]) }}" method="GET"
+    <form class="d-flex align-items-center" action="{{ route('projects.tasks', ['project' => $project]) }}" method="GET"
       action="{{ route('projects.index') }}">
   
       <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}"
