@@ -9,6 +9,7 @@ use App\Http\Controllers\UpdateAccountController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectTaskController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,5 @@ Route::post('change-password', [ChangePasswordController::class, 'store'])->name
 Route::resource('projects', ProjectController::class);
 
 Route::get('projects/{project:slug}/tasks', ProjectTaskController::class)->name('projects.tasks');
+
+Route::resource('tasks', TaskController::class);
