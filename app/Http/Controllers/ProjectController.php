@@ -20,7 +20,8 @@ class ProjectController extends Controller
             'tasks as tasks_in_progress_count' => function ($query) { $query->where('status', 'in progress');},
             'tasks as tasks_done_count' => function ($query) { $query->where('status', 'done'); },
             'tasks as tasks_need_discussion_count' => function ($query) { $query->where('status', 'need discussion');},
-        ]);
+        ])
+        ->where('created_by', auth()->id());
         
         if ($request->filled('search')) {
             $projectsQuery->search($request->search);
