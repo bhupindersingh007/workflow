@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Task;
+use App\Models\User;
 
 class ProjectTaskController extends Controller
 {
@@ -13,7 +15,11 @@ class ProjectTaskController extends Controller
     public function __invoke(Request $request, Project $project) 
     {
 
-        return view('projects.tasks', ['project' => $project]);
+        $statuses = Task::statuses();
+        $priorities = Task::priorities();
+        $members = User::orderBy('first_name')->get();
+
+        return view('projects.tasks', compact('project', 'statuses', 'priorities', 'members'));
 
     }
 }
