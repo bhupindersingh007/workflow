@@ -11,9 +11,26 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('tasks.index');
+
+        // assigned tasks
+
+        $tasksQuery = Task::with([
+            'project' => function ($query) { $query->select('id', 'title'); }
+            ])
+            ->where('assigned_to', auth()->id());
+
+
+        if($request->filled('search')) {
+
+            $tasksQuery->search($request->search)->paginate(20);
+
+        }
+
+        $assignedTasks = $tasksQuery->paginate(20)->withQueryString();
+
+        return view('tasks.index', ['assignedTasks' => $assignedTasks]);
     }
 
     /**
@@ -43,7 +60,7 @@ class TaskController extends Controller
         Task::create($validatedData);
 
         return back()->with('success', 'Task is Created.');
-    
+
 
     }
 
@@ -64,7 +81,7 @@ class TaskController extends Controller
         $priorities = Task::priorities();
         $members = User::orderBy('first_name')->get();
 
-        
+
         return view('tasks.edit', compact('statuses', 'priorities', 'members', 'task'));
     }
 
@@ -93,7 +110,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        
+
         $task->delete();
 
         return back()->with('success', 'Task is Deleted.');

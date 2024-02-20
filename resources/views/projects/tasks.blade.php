@@ -20,7 +20,7 @@
         </svg>
       </button>
   
-      @if (request('search') || request('status') || request('priority'))
+      @if (request('search'))
       <a href="{{ route('projects.tasks', ['project' => $project]) }}" class="btn btn-primary ms-1 d-flex align-items-center py-2">
         <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
           stroke-linecap="round" stroke-linejoin="round">

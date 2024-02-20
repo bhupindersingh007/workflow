@@ -7,13 +7,8 @@
     <h5 class="mb-0">Tasks</h5>
   
     {{-- Tasks Search --}}
-    <form class="d-flex align-items-center" method="GET" action="{{ route('projects.index') }}">
+    <form class="d-flex align-items-center" method="GET" action="{{ route('tasks.index') }}">
 
-      
-      <a class="btn btn-primary me-1 d-flex align-items-center py-2" data-bs-toggle="modal" data-bs-target="#filters-modal">
-        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" 
-        stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-      </a>
 
       <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}"
       style="width: 20rem;">
@@ -27,7 +22,7 @@
       </button>
   
       @if (request('search'))
-      <a href="{{ route('projects.index') }}" class="btn btn-primary ms-1 d-flex align-items-center py-2">
+      <a href="{{ route('tasks.index') }}" class="btn btn-primary ms-1 d-flex align-items-center py-2">
         <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -39,14 +34,13 @@
 
     </form>
 
-    @include('tasks.filters')
   
   </header>
 
 
-{{--Tasks --}}
+{{--Assigned Tasks --}}
   
-@if (true)
+@if ($assignedTasks->count() > 0)
 <div class="table-responsive">
   <table class="table table-striped border">
     <thead class="small">
@@ -61,14 +55,16 @@
     </tr>
     </thead>
     <tbody>
-      @foreach (range(1, 10) as $i)
+      @foreach ($assignedTasks as $task)
       <tr>
-        <td>Task {{ $i }}</td>
-        <td><span class="text-danger">&#9679;</span> To Do</td>
-        <td>{{ now()->format('d M, Y') }}</td>
-        <td><span class="text-danger">&#9679;</span> Low</td>
-        <td><a href="#" class="text-body">Project {{ $i }}</a></td>
-        <td>User {{ $i }}</td>
+        <td>{{ $task->title}}</td>
+        <td><span class="text-danger">&#9679;</span> {{ ucwords($task->status) }}</td>
+        <td>{{ $task->deadline_date->format('d M, Y') }}</td>
+        <td><span class="text-danger">&#9679;</span> {{ ucwords($task->priority) }}</td>
+        
+        <td><a href="#" class="text-body">{{ $task->project->title }}</a></td>
+
+        <td>User</td>
         <td>
           
           <a href="#" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#task-modal">
@@ -84,6 +80,7 @@
   </table>
 </div>
 
+{{ $assignedTasks->links() }}
 
 @else
 <div class="alert alert-primary">No Tasks.</div>

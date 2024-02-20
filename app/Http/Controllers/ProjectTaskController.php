@@ -23,10 +23,9 @@ class ProjectTaskController extends Controller
 
         if($request->filled('search')) {
 
-            $tasksQuery->search($request->search)->paginate(20)->withQueryString();
+            $tasksQuery->search($request->search)->paginate(20);
 
         }    
-
             
         $tasks = $tasksQuery->paginate(20)->withQueryString();
 
