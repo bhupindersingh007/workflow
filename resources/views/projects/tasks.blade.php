@@ -9,7 +9,13 @@
     {{-- Tasks Search --}}
     <form class="d-flex align-items-center" action="{{ route('projects.tasks', ['project' => $project]) }}" method="GET"
       action="{{ route('projects.index') }}">
-  
+
+      
+      <a class="btn btn-primary me-1 d-flex align-items-center py-2" data-bs-toggle="modal" data-bs-target="#filters-modal">
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" 
+        stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+      </a>
+
       <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}"
       style="width: 20rem;">
   
@@ -41,6 +47,13 @@
     
     {{-- New Project Task Modal --}}
     @include('projects.modal')
+
+    {{-- Project Task Filters Modal --}}
+    @include('projects.filters')
+
+    
+
+
   
   </header>
 
