@@ -43,11 +43,12 @@
 @if ($projects->count() > 0)
 <div class="table-responsive">
   <table class="table table-striped border">
-    <thead>
+    <thead class="small">
       <th>Title</th>
       <th><span class="text-danger">&#9679;</span> Tasks Pending</th>
       <th><span class="text-warning">&#9679;</span> Tasks In Progress</th>
       <th><span class="text-success">&#9679;</span> Tasks Done</th>
+      <th><span class="text-primary">&#9679;</span> Tasks Need Discussion</th>
       <th>Actions</th>
       </tr>
     </thead>
@@ -55,9 +56,10 @@
       @foreach ($projects as $project)
       <tr>
         <td>{{ $project->title }}</td>
-        <td>{{ 0 }}</td>
-        <td>{{ 0 }}</td>
-        <td>{{ 0 }}</td>
+        <td class="text-center">{{ $project->tasks_todo_count }}</td>
+        <td class="text-center">{{ $project->tasks_in_progress_count }}</td>
+        <td class="text-center">{{ $project->tasks_done_count }}</td>
+        <td class="text-center">{{ $project->tasks_need_discussion_count }}</td>
         <td>
           <a href="{{ route('projects.tasks', ['project' => $project]) }}" class="btn btn-sm">
             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
