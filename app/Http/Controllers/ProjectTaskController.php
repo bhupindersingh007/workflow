@@ -19,18 +19,16 @@ class ProjectTaskController extends Controller
         $priorities = Task::priorities();
         $members = User::orderBy('first_name')->get();
 
+        $tasksQuery = Task::where('project_id', $project->id);
+
         if($request->filled('search')) {
 
-            $tasks = Task::search($request->search)->paginate(20)->withQueryString();
-        } elseif($request->filled('status') || $request->filled('priority')) {
+            $tasksQuery->search($request->search)->paginate(20)->withQueryString();
 
-            $tasks = Task::filter($request->status, $request->priority)->paginate(20)->withQueryString();
+        }    
 
-        } else {
-
-            $tasks = Task::where('project_id', $project->id)->paginate(20);
-
-        }
+            
+        $tasks = $tasksQuery->paginate(20)->withQueryString();
 
         return view('projects.tasks', compact('project', 'statuses', 'priorities', 'members', 'tasks'));
 

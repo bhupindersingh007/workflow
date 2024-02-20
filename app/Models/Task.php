@@ -45,17 +45,19 @@ class Task extends Model
     }    
 
 
+    // Search Project Tasks
+
     public function scopeSearch(Builder $query, string $search)
     {
 
-        $query->where('title', 'LIKE', "%$search%");
-
-    }
-
-    public function scopeFilter(Builder $query, string $status = null, string $priority = null): void
-    {
-
-        $query->where('status', $status)->orWhere('priority', $priority);
+        $query->where('title', 'LIKE', "%$search%")
+            ->orWhere('status', 'LIKE', "%$search%")
+            ->orWhere('priority', 'LIKE', "%$search%")
+            ->orWhere('deadline_date', 'LIKE', "%$search%")
+            ->orWhereHas('user', function ($query) use ($search) {
+                $query->where('first_name', 'LIKE', "%$search%")
+                    ->orWhere('last_name', 'LIKE', "%$search%");
+            });
 
     }
 
