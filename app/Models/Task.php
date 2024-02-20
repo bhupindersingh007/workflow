@@ -13,6 +13,10 @@ class Task extends Model
     protected $guarded = [];
 
 
+    protected $casts = [
+        'deadline_date' => 'date'
+    ];
+
     // task status 
 
     public static function statuses()
@@ -34,7 +38,14 @@ class Task extends Model
         return $this->belongsTo(User::class, 'assigned_to');
     }
 
-    public function scopeSearch(Builder $query, string $search): void
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+
+    }    
+
+
+    public function scopeSearch(Builder $query, string $search)
     {
 
         $query->where('title', 'LIKE', "%$search%");

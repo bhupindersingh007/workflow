@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -59,7 +60,12 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        $statuses = Task::statuses();
+        $priorities = Task::priorities();
+        $members = User::orderBy('first_name')->get();
+
+        
+        return view('tasks.edit', compact('statuses', 'priorities', 'members', 'task'));
     }
 
     /**
@@ -67,7 +73,19 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'description' => 'nullable|max:65000',
+            'assigned_to' => 'required|exists:users,id',
+            'deadline_date' => 'required|date',
+            'status' => 'required',
+            'priority' => 'nullable'
+        ]);
+
+
+        $task->update($validatedData);
+
+        return back()->with('success', 'Task is Updated.');
     }
 
     /**
@@ -75,6 +93,9 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        
+        $task->delete();
+
+        return back()->with('success', 'Task is Deleted.');
     }
 }

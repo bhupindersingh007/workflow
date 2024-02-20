@@ -19,8 +19,6 @@ class ProjectTaskController extends Controller
         $priorities = Task::priorities();
         $members = User::orderBy('first_name')->get();
 
-
-
         if($request->filled('search')) {
 
             $tasks = Task::search($request->search)->paginate(20)->withQueryString();
