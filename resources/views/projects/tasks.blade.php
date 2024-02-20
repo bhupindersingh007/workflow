@@ -26,8 +26,8 @@
         </svg>
       </button>
   
-      @if (request('search'))
-      <a href="{{ route('projects.index') }}" class="btn btn-primary ms-1 d-flex align-items-center py-2">
+      @if (request('search') || request('status') || request('priority'))
+      <a href="{{ route('projects.tasks', ['project' => $project]) }}" class="btn btn-primary ms-1 d-flex align-items-center py-2">
         <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -59,7 +59,7 @@
 
 {{--Project Tasks --}}
   
-@if (true)
+@if ($tasks->count() > 0)
 <div class="table-responsive">
   <table class="table table-striped border">
     <thead>
@@ -73,11 +73,13 @@
     </tr>
     </thead>
     <tbody>
-      @foreach (range(1, 10) as $i)
+      @foreach ($tasks as $task)
       <tr>
-        <td>Task {{ $i }}</td>
-        <td><span class="text-danger">&#9679;</span> To Do</td>
-        <td>User {{ $i }}</td>
+        <td>{{ $task->title}}</td>
+        <td>
+          <span class="text-danger">&#9679;</span> {{ ucwords($task->status) }}
+        </td>
+        <td>{{ $task->user->fullName }}</td>
         <td>{{ now()->format('d M, Y') }}</td>
         <td><span class="text-danger">&#9679;</span> Low</td>
         <td>
@@ -105,6 +107,9 @@
     </tbody>
   </table>
 </div>
+
+{{-- Pagination --}}
+{{ $tasks->links() }}
 
 
 @else

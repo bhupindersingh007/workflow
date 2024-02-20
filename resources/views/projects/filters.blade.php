@@ -15,19 +15,18 @@
                         <div class="col-md-6 mb-3">
                             <select class="form-select" id="status" name="status">
                                 <option value="" selected disabled>Status...</option>
-                                <option value="todo">To Do</option>
-                                <option value="inProgress">In Progress</option>
-                                <option value="done">Done</option>
-                                <option value="needDiscussion">Need Discussion</option>
+                                @foreach ($statuses as $status)
+                                <option value="{{ $status }}">{{ ucwords($status) }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="col-md-5 mb-3">
                             <select class="form-select" id="priority" name="priority">
                                 <option value="" selected disabled>Priority...</option>
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
+                                @foreach ($priorities as $priority)
+                                <option value="{{ $priority }}">{{ ucwords($priority) }}</option>
+                                @endforeach
                             </select>
                         </div>
 
