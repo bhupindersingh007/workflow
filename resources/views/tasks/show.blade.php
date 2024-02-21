@@ -39,7 +39,7 @@
 
                     <tr>
                         <th>Deadline Date</th>
-                        <td>{{ $task->deadline_date->format('d m, Y') }}</td>
+                        <td>{{ $task->deadline_date->format('d M, Y') }}</td>
 
                     </tr>
                     <tr>
