@@ -18,7 +18,7 @@ class TaskController extends Controller
 
         $tasksQuery = Task::with([
             'assignedBy',
-            'project' => function ($query) { $query->select('id', 'title'); }
+            'project' => function ($query) { $query->select('id', 'title', 'slug'); }
             ])
             ->where('assigned_to', auth()->id());
 
