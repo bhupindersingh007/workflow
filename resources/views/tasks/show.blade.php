@@ -1,6 +1,6 @@
 {{-- Task Details Modal --}}
 
-<div class="modal fade" id="task-show-modal" tabindex="-1" aria-labelledby="task-show-modal-label" aria-hidden="true">
+<div class="modal fade" id="task-show-modal-{{ $task->id }}" tabindex="-1" aria-labelledby="task-show-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,7 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <table class="table table-striped border">
+                <table class="table table-striped table-bordered">
                 <tbody>
                     <tr>
                         <th>Title</th>
