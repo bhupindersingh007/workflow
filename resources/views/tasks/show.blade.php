@@ -16,7 +16,10 @@
                     </tr>
                     <tr>
                         <th>Status</th>
-                        <td>{{ ucwords($task->status) }}</td>
+                        <td>
+                            <span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span>
+                            {{ ucwords($task->status) }}
+                        </td>
 
                     </tr>
                     <tr>
@@ -41,7 +44,10 @@
                     </tr>
                     <tr>
                         <th>Priority</th>
-                        <td>{{ ucwords($task->priority) }}</td>
+                        <td>
+                            <span class="text-{{ App\Models\Task::colors($task->priority) }}">&#9679;</span>
+                            {{ ucwords($task->priority) }}
+                        </td>
                     </tr>
                 </tbody>
                 </table>

@@ -58,9 +58,9 @@
       @foreach ($assignedTasks as $task)
       <tr>
         <td>{{ $task->title}}</td>
-        <td><span class="text-danger">&#9679;</span> {{ ucwords($task->status) }}</td>
+        <td><span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span> {{ ucwords($task->status) }}</td>
         <td>{{ $task->deadline_date->format('d M, Y') }}</td>
-        <td><span class="text-danger">&#9679;</span> {{ ucwords($task->priority) }}</td>
+        <td><span class="text-{{ App\Models\Task::colors($task->priority) }}">&#9679;</span> {{ ucwords($task->priority) }}</td>
         
         <td><a href="{{ route('projects.show', ['project' => $task->project]) }}" class="text-body">{{ $task->project->title }}</a></td>
 

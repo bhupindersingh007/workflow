@@ -33,6 +33,35 @@ class Task extends Model
 
     }
 
+    
+    // task status and priorities colors
+
+    public static function colors(string $key)
+    {
+        
+        $colors = [
+            
+            // status 
+            'todo' => 'danger',
+            'in progress' => 'warning',
+            'done' => 'success',
+            'need discussion' => 'primary',
+            
+            // priorities
+            'low' => 'primary',
+            'medium' => 'warning',
+            'high' => 'danger',
+        
+        ];
+
+        return $colors[$key];
+
+    }
+
+    
+
+
+
     public function assignedTo()
     {
         return $this->belongsTo(User::class, 'assigned_to');
