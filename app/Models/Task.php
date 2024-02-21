@@ -76,6 +76,9 @@ class Task extends Model
             ->orWhere('status', 'LIKE', "%$search%")
             ->orWhere('priority', 'LIKE', "%$search%")
             ->orWhere('deadline_date', 'LIKE', "%$search%")
+            ->orWhereHas('project', function ($query) use ($search) {
+                $query->where('title', 'LIKE', "%$search%");
+            })
             ->orWhereHas('assignedBy', function ($query) use ($search) {
                 $query->where('first_name', 'LIKE', "%$search%")
                     ->orWhere('last_name', 'LIKE', "%$search%");
