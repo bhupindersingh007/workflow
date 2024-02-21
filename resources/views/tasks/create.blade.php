@@ -1,10 +1,10 @@
-{{--New Task Form --}}
+{{--New Task Form Modal --}}
 
-<div class="modal fade" id="task-modal" tabindex="-1" aria-labelledby="task-modal-label" aria-hidden="true">
+<div class="modal fade" id="task-create-modal" tabindex="-1" aria-labelledby="task-create-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="task-modal-label">New Task</h5>
+                <h5 class="modal-title" id="task-create-modal-label">New Task</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -65,12 +65,7 @@
                             </select>
                         </div>
 
-
-
                     </div>
-
-
-
 
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
