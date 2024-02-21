@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('status');
             $table->foreignId('project_id')->references('id')->on('projects');
             $table->foreignId('assigned_to')->references('id')->on('users');
+            $table->foreignId('assigned_by')->references('id')->on('users');
             $table->string('deadline_date');
             $table->string('priority')->nullable();
             $table->text('description')->nullable();
