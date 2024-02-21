@@ -57,6 +57,8 @@ class TaskController extends Controller
         ]);
 
 
+        $validatedData['assigned_by'] = auth()->id();
+
         Task::create($validatedData);
 
         return back()->with('success', 'Task is Created.');
