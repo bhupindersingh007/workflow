@@ -8,7 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped border">
                 <tbody>
                     <tr>
                         <th>Title</th>
