@@ -26,9 +26,14 @@
                     </tr>
                     <tr>
                         <th>Assigned To</th>
-                        <td>{{ $task->user->fullName }}</td>
-
+                        <td>{{ $task->assignedTo->fullName }}</td>
                     </tr>
+
+                    <tr>
+                        <th>Assigned By</th>
+                        <td>{{ $task->assignedBy->fullName }}</td>
+                    </tr>
+
                     <tr>
                         <th>Deadline Date</th>
                         <td>{{ $task->deadline_date->format('d m, Y') }}</td>

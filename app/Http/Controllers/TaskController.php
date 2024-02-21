@@ -17,6 +17,7 @@ class TaskController extends Controller
         // assigned tasks
 
         $tasksQuery = Task::with([
+            'assignedBy',
             'project' => function ($query) { $query->select('id', 'title'); }
             ])
             ->where('assigned_to', auth()->id());
@@ -24,7 +25,7 @@ class TaskController extends Controller
 
         if($request->filled('search')) {
 
-            $tasksQuery->search($request->search)->paginate(20);
+            $tasksQuery->searchTasks($request->search)->paginate(20);
 
         }
 

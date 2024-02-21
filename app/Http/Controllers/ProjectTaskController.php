@@ -19,11 +19,11 @@ class ProjectTaskController extends Controller
         $priorities = Task::priorities();
         $members = User::orderBy('first_name')->get();
 
-        $tasksQuery = Task::where('project_id', $project->id);
+        $tasksQuery = Task::with('assignedTo', 'assignedBy')->where('project_id', $project->id);
 
         if($request->filled('search')) {
 
-            $tasksQuery->search($request->search)->paginate(20);
+            $tasksQuery->searchProjectTasks($request->search)->paginate(20);
 
         }    
             

@@ -64,7 +64,7 @@
         
         <td><a href="#" class="text-body">{{ $task->project->title }}</a></td>
 
-        <td>User</td>
+        <td>{{ $task->assignedBy->fullName }}</td>
         <td>
           
           <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#task-show-modal">

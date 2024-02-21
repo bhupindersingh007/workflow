@@ -33,9 +33,14 @@ class Task extends Model
 
     }
 
-    public function user()
+    public function assignedTo()
     {
         return $this->belongsTo(User::class, 'assigned_to');
+    }
+
+    public function assignedBy()
+    {
+        return $this->belongsTo(User::class, 'assigned_by');
     }
 
     public function project()
@@ -47,14 +52,31 @@ class Task extends Model
 
     // Search Project Tasks
 
-    public function scopeSearch(Builder $query, string $search)
+    public function scopeSearchProjectTasks(Builder $query, string $search)
     {
 
         $query->where('title', 'LIKE', "%$search%")
             ->orWhere('status', 'LIKE', "%$search%")
             ->orWhere('priority', 'LIKE', "%$search%")
             ->orWhere('deadline_date', 'LIKE', "%$search%")
-            ->orWhereHas('user', function ($query) use ($search) {
+            ->orWhereHas('assignedTo', function ($query) use ($search) {
+                $query->where('first_name', 'LIKE', "%$search%")
+                    ->orWhere('last_name', 'LIKE', "%$search%");
+            });
+
+    }
+
+
+    // Search Tasks
+
+    public function scopeSearchTasks(Builder $query, string $search)
+    {
+
+        $query->where('title', 'LIKE', "%$search%")
+            ->orWhere('status', 'LIKE', "%$search%")
+            ->orWhere('priority', 'LIKE', "%$search%")
+            ->orWhere('deadline_date', 'LIKE', "%$search%")
+            ->orWhereHas('assignedBy', function ($query) use ($search) {
                 $query->where('first_name', 'LIKE', "%$search%")
                     ->orWhere('last_name', 'LIKE', "%$search%");
             });

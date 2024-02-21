@@ -64,11 +64,11 @@
     <tbody>
       @foreach ($tasks as $task)
       <tr>
-        <td>{{ $task->title}}</td>
+        <td>{{ $task->title }}</td>
         <td>
           <span class="text-danger">&#9679;</span> {{ ucwords($task->status) }}
         </td>
-        <td>{{ $task->user->fullName }}</td>
+        <td>{{ $task->assignedTo->fullName }}</td>
         <td>{{ $task->deadline_date->format('d M, Y') }}</td>
         <td><span class="text-danger">&#9679;</span> {{ ucwords($task->priority) }}</td>
         <td>
