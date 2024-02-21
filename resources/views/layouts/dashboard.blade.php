@@ -36,6 +36,10 @@
             }
 
         }
+
+        .table-striped>tbody>tr:nth-of-type(odd)>* {
+            --bs-table-bg-type: #f3f4f6;
+        }
     </style>
 
 </head>

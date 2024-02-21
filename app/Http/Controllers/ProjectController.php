@@ -15,9 +15,19 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
 
-        $projects = $request->filled('search')
-            ? Project::search($request->search)->paginate(20)->withQueryString()
-            : Project::paginate(20);
+        $projectsQuery = Project::withCount([
+            'tasks as tasks_todo_count' => function ($query) { $query->where('status', 'todo'); },
+            'tasks as tasks_in_progress_count' => function ($query) { $query->where('status', 'in progress');},
+            'tasks as tasks_done_count' => function ($query) { $query->where('status', 'done'); },
+            'tasks as tasks_need_discussion_count' => function ($query) { $query->where('status', 'need discussion');},
+        ])
+        ->where('created_by', auth()->id());
+        
+        if ($request->filled('search')) {
+            $projectsQuery->search($request->search);
+        }
+        
+        $projects = $projectsQuery->paginate(20)->withQueryString();
 
         return view('projects.index', ['projects' => $projects]);
     }

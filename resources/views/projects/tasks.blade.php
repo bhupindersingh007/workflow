@@ -9,12 +9,6 @@
     {{-- Tasks Search --}}
     <form class="d-flex align-items-center" action="{{ route('projects.tasks', ['project' => $project]) }}" method="GET">
 
-      
-      <a class="btn btn-primary me-1 d-flex align-items-center py-2" data-bs-toggle="modal" data-bs-target="#filters-modal">
-        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" 
-        stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-      </a>
-
       <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}"
       style="width: 20rem;">
   
@@ -27,7 +21,7 @@
       </button>
   
       @if (request('search'))
-      <a href="{{ route('projects.index') }}" class="btn btn-primary ms-1 d-flex align-items-center py-2">
+      <a href="{{ route('projects.tasks', ['project' => $project]) }}" class="btn btn-primary ms-1 d-flex align-items-center py-2">
         <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -36,8 +30,8 @@
       </a>
       @endif
   
-      {{--Open New Project Task Modal --}}
-      <a href="#" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#task-modal">
+      {{-- New Project Task Modal --}}
+      <a href="#" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#task-create-modal">
         &plus; Task
       </a>
 
@@ -45,12 +39,7 @@
 
     
     {{-- New Project Task Modal --}}
-    @include('projects.modal')
-
-    {{-- Project Task Filters Modal --}}
-    @include('projects.filters')
-
-    
+    @include('tasks.create')
 
 
   
@@ -59,7 +48,7 @@
 
 {{--Project Tasks --}}
   
-@if (true)
+@if ($tasks->count() > 0)
 <div class="table-responsive">
   <table class="table table-striped border">
     <thead>
@@ -73,24 +62,29 @@
     </tr>
     </thead>
     <tbody>
-      @foreach (range(1, 10) as $i)
+      @foreach ($tasks as $task)
       <tr>
-        <td>Task {{ $i }}</td>
-        <td><span class="text-danger">&#9679;</span> To Do</td>
-        <td>User {{ $i }}</td>
-        <td>{{ now()->format('d M, Y') }}</td>
-        <td><span class="text-danger">&#9679;</span> Low</td>
+        <td>{{ $task->title }}</td>
+        <td>
+          <span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span> {{ ucwords($task->status) }}
+        </td>
+        <td>{{ $task->assignedTo->fullName }}</td>
+        <td>{{ $task->deadline_date->format('d M, Y') }}</td>
+        <td><span class="text-{{ App\Models\Task::colors($task->priority) }}">&#9679;</span> {{ ucwords($task->priority) }}</td>
         <td>
           
-          <a href="#" class="btn btn-sm">
+          <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#task-show-modal-{{ $task->id }}">
             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-          </a>
+          </button>
+
+          {{-- Show Task Details Modal --}}
+          @include('tasks.show', ['task' => $task])
           
-          <a href="#" class="btn btn-sm">
+          <a href="{{ route('tasks.edit', ['task' => $task]) }}" class="btn btn-sm">
             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
           </a>
 
-          <form action="#" method="POST" class="d-inline-block"
+          <form action="{{ route('tasks.destroy', ['task' => $task]) }}" method="POST" class="d-inline-block"
             onsubmit="confirm('Are you sure?');">
             @csrf
             @method('DELETE')
@@ -105,6 +99,9 @@
     </tbody>
   </table>
 </div>
+
+{{-- Pagination --}}
+{{ $tasks->links() }}
 
 
 @else

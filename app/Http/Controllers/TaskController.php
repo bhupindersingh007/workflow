@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -10,9 +11,27 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('tasks.index');
+
+        // assigned tasks
+
+        $tasksQuery = Task::with([
+            'assignedBy',
+            'project' => function ($query) { $query->select('id', 'title', 'slug'); }
+            ])
+            ->where('assigned_to', auth()->id());
+
+
+        if($request->filled('search')) {
+
+            $tasksQuery->searchTasks($request->search)->paginate(20);
+
+        }
+
+        $assignedTasks = $tasksQuery->paginate(20)->withQueryString();
+
+        return view('tasks.index', ['assignedTasks' => $assignedTasks]);
     }
 
     /**
@@ -28,7 +47,24 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'description' => 'nullable|max:65000',
+            'assigned_to' => 'required|exists:users,id',
+            'deadline_date' => 'required|date',
+            'project_id' => 'required|exists:projects,id',
+            'status' => 'required',
+            'priority' => 'nullable'
+        ]);
+
+
+        $validatedData['assigned_by'] = auth()->id();
+
+        Task::create($validatedData);
+
+        return back()->with('success', 'Task is Created.');
+
+
     }
 
     /**
@@ -44,7 +80,12 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        $statuses = Task::statuses();
+        $priorities = Task::priorities();
+        $members = User::orderBy('first_name')->get();
+
+
+        return view('tasks.edit', compact('statuses', 'priorities', 'members', 'task'));
     }
 
     /**
@@ -52,7 +93,19 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'description' => 'nullable|max:65000',
+            'assigned_to' => 'required|exists:users,id',
+            'deadline_date' => 'required|date',
+            'status' => 'required',
+            'priority' => 'nullable'
+        ]);
+
+
+        $task->update($validatedData);
+
+        return back()->with('success', 'Task is Updated.');
     }
 
     /**
@@ -60,6 +113,9 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+
+        $task->delete();
+
+        return back()->with('success', 'Task is Deleted.');
     }
 }
