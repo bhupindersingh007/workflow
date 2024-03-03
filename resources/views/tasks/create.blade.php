@@ -27,7 +27,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="assignedTo" class="form-label">Assigned To</label>
-                            <select class="form-select" id="assigned_to" name="assigned_to" required>
+                            <select class="form-select" id="assigned_to" name="assigned_to">
                                 <option value="" selected disabled>Choose...</option>
                                 @foreach ($members as $member)
                                   <option value="{{ $member->id }}">{{ $member->fullName }}</option>
@@ -37,7 +37,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="status" class="form-label">Status</label>
-                            <select class="form-select" id="status" name="status" required>
+                            <select class="form-select" id="status" name="status">
                                 <option value="" selected disabled>Choose...</option>
                                 @foreach ($statuses as $status)
                                 <option value="{{ $status }}">{{ ucwords($status) }}</option>
@@ -52,7 +52,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="deadline_date" class="form-label">Deadline Date</label>
-                            <input type="date" class="form-control" id="deadline_date" name="deadline_date" required>
+                            <input type="date" class="form-control" id="deadline_date" name="deadline_date">
                         </div>
 
                         <div class="col-md-6 mb-3">

@@ -65,12 +65,21 @@
       @foreach ($tasks as $task)
       <tr>
         <td>{{ $task->title }}</td>
+        
         <td>
-          <span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span> {{ ucwords($task->status) }}
+          @isset ($task->status)
+            <span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span> {{ ucwords($task->status) }}
+          @endisset
         </td>
-        <td>{{ $task->assignedTo->fullName }}</td>
-        <td>{{ $task->deadline_date->format('d M, Y') }}</td>
-        <td><span class="text-{{ App\Models\Task::colors($task->priority) }}">&#9679;</span> {{ ucwords($task->priority) }}</td>
+        
+        <td>{{ $task->assignedTo->fullName ?? '' }}</td>
+        
+        <td>{{ $task->deadline_date ? $task->deadline_date->format('d M, Y') : '' }}</td>
+        
+        <td>
+           @isset ($task->priority)
+            <span class="text-{{ App\Models\Task::colors($task->priority) }}">&#9679;</span> {{ ucwords($task->priority) }}</td>
+          @endisset
         <td>
           
           <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#task-show-modal-{{ $task->id }}">

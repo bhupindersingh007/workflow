@@ -48,17 +48,20 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|max:100',
+            'title' => 'required|max:150',
             'description' => 'nullable|max:65000',
-            'assigned_to' => 'required|exists:users,id',
-            'deadline_date' => 'required|date',
+            'assigned_to' => 'nullable|exists:users,id',
+            'deadline_date' => 'nullable|date',
             'project_id' => 'required|exists:projects,id',
-            'status' => 'required',
-            'priority' => 'nullable'
+            'status' => 'nullable|in:' . implode(',', Task::statuses()),
+            'priority' => 'nullable|in:' . implode(',', Task::priorities())
         ]);
 
+        // add assignor, if assignee is given
 
-        $validatedData['assigned_by'] = auth()->id();
+        if($request->filled('assigned_to')){
+            $validatedData['assigned_by'] = auth()->id();
+        }
 
         Task::create($validatedData);
 
@@ -94,14 +97,17 @@ class TaskController extends Controller
     public function update(Request $request, Task $task)
     {
         $validatedData = $request->validate([
-            'title' => 'required|max:100',
+            'title' => 'required|max:150',
             'description' => 'nullable|max:65000',
-            'assigned_to' => 'required|exists:users,id',
-            'deadline_date' => 'required|date',
-            'status' => 'required',
-            'priority' => 'nullable'
+            'assigned_to' => 'nullable|exists:users,id',
+            'deadline_date' => 'nullable|date',
+            'status' => 'nullable|in:' . implode(',', Task::statuses()),
+            'priority' => 'nullable|in:' . implode(',', Task::priorities())
         ]);
 
+        if($request->filled('assigned_to')){
+            $validatedData['assigned_by'] = auth()->id();
+        }
 
         $task->update($validatedData);
 

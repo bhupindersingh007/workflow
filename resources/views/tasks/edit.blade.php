@@ -25,7 +25,7 @@
 
         <div class="col-md-6 mb-3">
             <label for="assignedTo" class="form-label">Assigned To</label>
-            <select class="form-select" id="assigned_to" name="assigned_to" required>
+            <select class="form-select" id="assigned_to" name="assigned_to">
                 <option value="" selected disabled>Choose...</option>
                 @foreach ($members as $member)
                   <option value="{{ $member->id }}" {{ $member->id = $task->assigned_to ? 'selected' : '' }}>
@@ -37,7 +37,8 @@
 
         <div class="col-md-6 mb-3">
             <label for="status" class="form-label">Status</label>
-            <select class="form-select" id="status" name="status" required>
+            <select class="form-select" id="status" name="status">
+                <option value="" selected disabled>Choose...</option>
                 @foreach ($statuses as $status)
                 <option value="{{ $status }}" {{ $status == $task->status ? 'selected' : '' }}>
                     {{ ucwords($status) }}
@@ -53,12 +54,13 @@
 
         <div class="col-md-6 mb-3">
             <label for="deadline_date" class="form-label">Deadline Date</label>
-            <input type="date" class="form-control" id="deadline_date" name="deadline_date" value="{{ $task->deadline_date->format('Y-m-d') }}" required>
+            <input type="date" class="form-control" id="deadline_date" name="deadline_date" value="{{ $task->deadline_date ? $task->deadline_date->format('Y-m-d') : old('deadline_date') }}">
         </div>
 
         <div class="col-md-6 mb-3">
             <label for="priority" class="form-label">Priority</label>
             <select class="form-select" id="priority" name="priority">
+                <option value="" selected disabled>Choose...</option>
                 @foreach ($priorities as $priority)
                 <option value="{{ $priority }}" {{ $priority == $task->priority ? 'selected' : '' }}>
                     {{ ucwords($priority) }}
