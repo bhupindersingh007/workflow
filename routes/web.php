@@ -32,18 +32,25 @@ Route::post('register', [RegisterController::class, 'store'])->name('register.st
 Route::get('login', [LoginController::class, 'create'])->name('login.create');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
 
-Route::match(['get', 'post'], 'logout', LogoutController::class)->name('logout')->middleware('auth');
 
-Route::get('dashboard', DashboardController::class)->name('dashboard')->middleware('auth');
+Route::middleware(['auth'])->group(function () {
 
-Route::get('update-account', [UpdateAccountController::class, 'create'])->name('update.account.create');
-Route::post('update-account', [UpdateAccountController::class, 'store'])->name('update.account.store');
+    Route::match(['get', 'post'], 'logout', LogoutController::class)->name('logout');
 
-Route::get('change-password', [ChangePasswordController::class, 'create'])->name('change.password.create');
-Route::post('change-password', [ChangePasswordController::class, 'store'])->name('change.password.store');
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
 
-Route::resource('projects', ProjectController::class);
+    Route::get('update-account', [UpdateAccountController::class, 'create'])->name('update.account.create');
+    Route::post('update-account', [UpdateAccountController::class, 'store'])->name('update.account.store');
 
-Route::get('projects/{project:slug}/tasks', ProjectTaskController::class)->name('projects.tasks');
+    Route::get('change-password', [ChangePasswordController::class, 'create'])->name('change.password.create');
+    Route::post('change-password', [ChangePasswordController::class, 'store'])->name('change.password.store');
 
-Route::resource('tasks', TaskController::class);
+    Route::resource('projects', ProjectController::class);
+
+    Route::get('projects/{project:slug}/tasks', ProjectTaskController::class)->name('projects.tasks');
+
+    Route::resource('tasks', TaskController::class);
+
+
+});
+
