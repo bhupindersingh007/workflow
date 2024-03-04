@@ -13,7 +13,7 @@
       <th>Description</th>
     </tr>
     <tr>
-      <td>{!! $project->description !!}</td>
+      <td class="p-3">{!! $project->description ?? 'NOT GIVEN' !!}</td>
     </tr>
   </tbody>
 </table>
