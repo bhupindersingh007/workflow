@@ -57,7 +57,8 @@
     <tbody>
       @foreach ($assignedTasks as $task)
       <tr>
-        <td>{{ $task->title}}</td>
+        
+        <td>{{ Str::limit($task->title, 20) }}</td>
         
         <td>
           @isset($task->status)

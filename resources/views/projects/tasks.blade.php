@@ -5,7 +5,7 @@
 <header class="d-flex justify-content-between align-items-center mb-4">
   
     <h5 class="mb-0">
-      <a href="{{ route('projects.show', ['project' => $project]) }}" class="text-body">{{ Str::limit($project->title, 30) }}</a>
+      <a href="{{ route('projects.show', ['project' => $project]) }}" class="text-body">{{ Str::limit($project->title, 25) }}</a>
     </h5>
   
     {{-- Tasks Search --}}
@@ -66,7 +66,7 @@
     <tbody>
       @foreach ($tasks as $task)
       <tr>
-        <td>{{ $task->title }}</td>
+        <td>{{ Str::limit($task->title, 20) }}</td>
         
         <td>
           @isset ($task->status)

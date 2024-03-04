@@ -6,6 +6,7 @@
   <h5 class="mb-0">Projects</h5>
 
   {{-- Project Search --}}
+  
   <form class="d-flex align-items-center" action="{{ route('projects.index') }}" method="GET"
     action="{{ route('projects.index') }}">
 
@@ -55,7 +56,9 @@
     <tbody>
       @foreach ($projects as $project)
       <tr>
-        <td>{{ $project->title }}</td>
+        
+        <td>{{ Str::limit($project->title, 20) }}</td>
+
         <td class="text-center">{{ $project->tasks_todo_count }}</td>
         <td class="text-center">{{ $project->tasks_in_progress_count }}</td>
         <td class="text-center">{{ $project->tasks_done_count }}</td>
