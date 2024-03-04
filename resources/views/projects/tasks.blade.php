@@ -4,7 +4,9 @@
 
 <header class="d-flex justify-content-between align-items-center mb-4">
   
-    <h5 class="mb-0">{{ $project->title }}</h5>
+    <h5 class="mb-0">
+      <a href="{{ route('projects.show', ['project' => $project]) }}" class="text-body">{{ Str::limit($project->title, 30) }}</a>
+    </h5>
   
     {{-- Tasks Search --}}
     <form class="d-flex align-items-center" action="{{ route('projects.tasks', ['project' => $project]) }}" method="GET">
