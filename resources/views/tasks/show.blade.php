@@ -17,8 +17,13 @@
                     <tr>
                         <th>Status</th>
                         <td>
-                            <span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span>
-                            {{ ucwords($task->status) }}
+                            
+                            @isset ($task->status)
+                                
+                            <span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span> {{ ucwords($task->status) }}
+                            
+                            @endisset
+
                         </td>
 
                     </tr>
@@ -29,24 +34,27 @@
                     </tr>
                     <tr>
                         <th>Assigned To</th>
-                        <td>{{ $task->assignedTo->fullName }}</td>
+                        <td>{{ $task->assignedTo->fullName ?? '' }}</td>
                     </tr>
 
                     <tr>
                         <th>Assigned By</th>
-                        <td>{{ $task->assignedBy->fullName }}</td>
+                        <td>{{ $task->assignedBy->fullName ?? '' }}</td>
                     </tr>
 
                     <tr>
                         <th>Deadline Date</th>
-                        <td>{{ $task->deadline_date->format('d M, Y') }}</td>
+                        <td>{{ $task->deadline_date ? $task->deadline_date->format('d M, Y') : '' }}</td>
 
                     </tr>
                     <tr>
                         <th>Priority</th>
                         <td>
-                            <span class="text-{{ App\Models\Task::colors($task->priority) }}">&#9679;</span>
-                            {{ ucwords($task->priority) }}
+                            @isset ($task->status)
+    
+                                <span class="text-{{ App\Models\Task::colors($task->priority) }}">&#9679;</span> {{ ucwords($task->priority) }}
+
+                            @endisset
                         </td>
                     </tr>
                 </tbody>

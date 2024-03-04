@@ -4,7 +4,9 @@
 
 <header class="d-flex justify-content-between align-items-center mb-4">
   
-    <h5 class="mb-0">{{ $project->title }}</h5>
+    <h5 class="mb-0">
+      <a href="{{ route('projects.show', ['project' => $project]) }}" class="text-body">{{ Str::limit($project->title, 25) }}</a>
+    </h5>
   
     {{-- Tasks Search --}}
     <form class="d-flex align-items-center" action="{{ route('projects.tasks', ['project' => $project]) }}" method="GET">
@@ -64,13 +66,22 @@
     <tbody>
       @foreach ($tasks as $task)
       <tr>
-        <td>{{ $task->title }}</td>
+        <td>{{ Str::limit($task->title, 20) }}</td>
+        
         <td>
-          <span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span> {{ ucwords($task->status) }}
+          @isset ($task->status)
+            <span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span> {{ ucwords($task->status) }}
+          @endisset
         </td>
-        <td>{{ $task->assignedTo->fullName }}</td>
-        <td>{{ $task->deadline_date->format('d M, Y') }}</td>
-        <td><span class="text-{{ App\Models\Task::colors($task->priority) }}">&#9679;</span> {{ ucwords($task->priority) }}</td>
+        
+        <td>{{ $task->assignedTo->fullName ?? '' }}</td>
+        
+        <td>{{ $task->deadline_date ? $task->deadline_date->format('d M, Y') : '' }}</td>
+        
+        <td>
+           @isset ($task->priority)
+            <span class="text-{{ App\Models\Task::colors($task->priority) }}">&#9679;</span> {{ ucwords($task->priority) }}</td>
+          @endisset
         <td>
           
           <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#task-show-modal-{{ $task->id }}">
