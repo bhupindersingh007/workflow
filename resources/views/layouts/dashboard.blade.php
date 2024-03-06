@@ -40,6 +40,13 @@
         .table-striped>tbody>tr:nth-of-type(odd)>* {
             --bs-table-bg-type: #f3f4f6;
         }
+
+        .form-control:focus, 
+        .form-select:focus {
+            border-color: transparent;
+            box-shadow: 0 0 0 .1rem #3d8bfffa;
+        } 
+
     </style>
 
 </head>

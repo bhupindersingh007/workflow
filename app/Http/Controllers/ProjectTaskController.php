@@ -19,7 +19,7 @@ class ProjectTaskController extends Controller
         $priorities = Task::priorities();
         $members = User::orderBy('first_name')->get();
 
-        $tasksQuery = Task::with('assignedTo', 'assignedBy')->where('project_id', $project->id);
+        $tasksQuery = Task::with('assignedTo', 'assignedBy')->where('project_id', $project->id)->latest();
 
         if($request->filled('search')) {
 

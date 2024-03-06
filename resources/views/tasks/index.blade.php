@@ -79,11 +79,9 @@
         <td>{{ $task->assignedBy->fullName }}</td>
         <td>
           
-          <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#task-show-modal-{{ $task->id }}">
+          <a class="btn btn-sm" href="{{ route('tasks.show', ['task' => $task]) }}">
             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-          </button>
-
-          @include('tasks.show')
+          </a>
 
         </td>
       </tr>

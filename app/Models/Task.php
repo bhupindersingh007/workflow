@@ -115,5 +115,11 @@ class Task extends Model
 
     }
 
+    public function comments()
+    {
+        return $this->hasMany(TaskComment::class, 'task_id')->orderBy('id', 'DESC');
+    }
+
+
 
 }

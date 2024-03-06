@@ -20,7 +20,8 @@ class TaskController extends Controller
             'assignedBy',
             'project' => function ($query) { $query->select('id', 'title', 'slug'); }
             ])
-            ->where('assigned_to', auth()->id());
+            ->where('assigned_to', auth()->id())
+            ->latest();
 
 
         if($request->filled('search')) {
@@ -75,7 +76,10 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        
+        $comments = $task->comments()->with('user')->paginate()->fragment('comments');
+        return view('tasks.show', compact('task', 'comments'));
+
     }
 
     /**

@@ -24,6 +24,14 @@ return new class extends Migration
             $table->timestamp('completed_at')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('task_comments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('task_id')->constrained()->onDelete('cascade');
+            $table->string('comment', 200);
+            $table->foreignId('user_id');
+            $table->timestamp('created_at');
+        });
     }
 
     /**
@@ -32,5 +40,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('tasks');
+        Schema::dropIfExists('task_comments');
     }
 };
