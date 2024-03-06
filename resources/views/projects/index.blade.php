@@ -77,7 +77,7 @@
 
           {{-- Delete Project --}}
           <form action="{{ route('projects.destroy', ['project'=> $project]) }}" method="POST" class="d-inline-block"
-            onsubmit="confirm('Are you sure?');">
+            onsubmit="return confirm('Are you sure?');">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-sm text-danger">
