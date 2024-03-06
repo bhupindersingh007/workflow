@@ -21,7 +21,8 @@ class ProjectController extends Controller
             'tasks as tasks_done_count' => function ($query) { $query->where('status', 'done'); },
             'tasks as tasks_need_discussion_count' => function ($query) { $query->where('status', 'need discussion');},
         ])
-        ->where('created_by', auth()->id());
+        ->where('created_by', auth()->id())
+        ->latest();
         
         if ($request->filled('search')) {
             $projectsQuery->search($request->search);

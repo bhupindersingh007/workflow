@@ -20,7 +20,8 @@ class TaskController extends Controller
             'assignedBy',
             'project' => function ($query) { $query->select('id', 'title', 'slug'); }
             ])
-            ->where('assigned_to', auth()->id());
+            ->where('assigned_to', auth()->id())
+            ->latest();
 
 
         if($request->filled('search')) {
