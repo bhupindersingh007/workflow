@@ -10,6 +10,7 @@ use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectTaskController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TaskCommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('projects/{project:slug}/tasks', ProjectTaskController::class)->name('projects.tasks');
 
     Route::resource('tasks', TaskController::class);
+
+    // task comments
+    Route::resource('tasks.comments', TaskCommentController::class)->except('index', 'create');
 
 
 });

@@ -75,7 +75,10 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        
+        $comments = $task->comments()->with('user')->paginate()->fragment('comments');
+        return view('tasks.show', compact('task', 'comments'));
+
     }
 
     /**
