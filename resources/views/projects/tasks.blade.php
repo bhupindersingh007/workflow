@@ -94,7 +94,7 @@
           </a>
 
           <form action="{{ route('tasks.destroy', ['task' => $task]) }}" method="POST" class="d-inline-block"
-            onsubmit="confirm('Are you sure?');">
+            onsubmit="return confirm('Are you sure?');">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-sm text-danger">
