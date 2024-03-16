@@ -11,6 +11,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectTaskController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TaskCommentController;
+use App\Http\Controllers\TeamMemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,9 @@ Route::middleware(['auth'])->group(function () {
 
     // task comments
     Route::resource('tasks.comments', TaskCommentController::class)->except('index', 'create');
+
+    // team members
+    Route::resource('team-members', TeamMemberController::class)->only('index', 'create', 'store');
 
 
 });
