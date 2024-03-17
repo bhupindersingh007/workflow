@@ -1,11 +1,12 @@
 @extends('layouts.dashboard')
 @section('content')
 
-<header class="d-flex justify-content-between align-items-center mb-4">
+<header class="d-flex justify-content-between align-items-center">
     <h5 class="mb-0">Edit Task</h5>
     <a class="btn btn-sm btn-primary" href="{{ route('projects.tasks', ['project' => $task->project]) }}">Back</a>
 </header>
 
+<hr>
 
 <form action="{{ route('tasks.update', ['task' => $task]) }}" method="POST">
     @csrf
