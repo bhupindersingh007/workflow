@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('invitations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->foreignId('assigned_by')->references('id')->on('users');
+            $table->foreignId('invited_by')->references('id')->on('users');
             $table->foreignId('invited_user_id')->references('id')->on('users');
             $table->string('status');
             $table->timestamp('created_at')->useCurrent();

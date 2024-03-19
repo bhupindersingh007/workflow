@@ -35,7 +35,7 @@ class Invitation extends Model
     
     public function invitedBy()
     {
-        return $this->belongsTo(User::class, 'assigned_by');
+        return $this->belongsTo(User::class, 'invited_by');
 
     }   
 

@@ -20,7 +20,7 @@ class TeamMemberController extends Controller
             'invitedUser' => function ($query) { $query->select('id', 'first_name', 'last_name', 'email'); },
             'project' => function ($query) { $query->select('id', 'title', 'slug'); }
             ])
-            ->where('assigned_by', auth()->id())
+            ->where('invited_by', auth()->id())
             ->orderBy('created_at');
 
 
@@ -62,7 +62,7 @@ class TeamMemberController extends Controller
         // default invitation status is pending
         $validatedData['status'] = 'pending';
 
-        $validatedData['assigned_by'] = auth()->id();
+        $validatedData['invited_by'] = auth()->id();
 
         Invitation::create($validatedData);
 
