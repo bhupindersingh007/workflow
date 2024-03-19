@@ -58,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('tasks.comments', TaskCommentController::class)->except('index', 'create');
 
     // team members
-    Route::resource('team-members', TeamMemberController::class)->only('index', 'create', 'store');
+    Route::resource('team-members', TeamMemberController::class)->only('index', 'create', 'store', 'destroy');
 
     // users api
     Route::get('api/users', UserController::class)->name('users.index');

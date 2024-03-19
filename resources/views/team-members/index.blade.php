@@ -71,7 +71,7 @@
         <td>{{ $invitation->created_at->format('d M, Y') }}</td>
         
         <td>
-          <form action="#" method="POST" class="d-inline-block"
+          <form action="{{ route('team-members.destroy', ['team_member'  => $invitation->id ]) }}" method="POST" class="d-inline-block"
           onsubmit="return confirm('Are you sure?');">
           @csrf
           @method('DELETE')

@@ -97,8 +97,11 @@ class TeamMemberController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $invitation_id)
     {
-        //
+    
+        Invitation::where('id' , $invitation_id)->delete();
+
+        return back()->with('success', 'Invitation is Deleted.');
     }
 }
