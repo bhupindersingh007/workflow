@@ -2,12 +2,7 @@
 @section('content')
 
 
-<header class="d-flex justify-content-between align-items-center mb-4">
-
-    <h5 class="mb-0">Invitations</h5>
-
-</header>
-
+<h5 class="mb-3">Invitations</h5>
 
 {{-- Invitations --}}
 
@@ -20,6 +15,7 @@
                 <th>Invitation Status</th>
                 <th>Invitation By</th>
                 <th>Invitation Date</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>

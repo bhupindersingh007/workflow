@@ -17,7 +17,17 @@ class ProjectTaskController extends Controller
 
         $statuses = Task::statuses();
         $priorities = Task::priorities();
-        $members = User::orderBy('first_name')->get();
+
+        // project members
+
+        $members = User::whereHas('invitations', function ($query) use ($project) {
+            $query->where('project_id', $project->id)->where('status', 'accepted');
+        })
+        ->orderBy('first_name')->get();
+
+        // add project as team member
+        $members->push(auth()->user());
+
 
         $tasksQuery = Task::with('assignedTo', 'assignedBy')->where('project_id', $project->id)->latest();
 
