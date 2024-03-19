@@ -11,4 +11,7 @@ class Invitation extends Model
 
     protected $guarded = [];
 
+    public $timestamps = false;
+
+
 }

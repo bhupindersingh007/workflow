@@ -12,23 +12,27 @@
 
 {{-- Invite New Team Member --}}
 
-<form action="{{ route('team-members.store') }}" method="POST">
+<form action="{{ route('team-members.store') }}" method="POST" onsubmit="return confirm('Are you sure?');">
 
     @csrf
 
     <div class="mb-3">
         <label for="project" class="form-label">Project Name</label>
-        <select class="form-select" id="project_id" name="project_id">
+        <select class="form-select mb-1" id="project_id" name="project_id">
             <option value="" selected disabled>Choose...</option>
             @foreach ($projects as $project)
               <option value="{{ $project->id }}">{{ $project->title }}</option>
             @endforeach
         </select>
+        
+        @error('project_id')
+        <small class="text-danger">The project name is required.</small>
+        @enderror
     </div>
 
-    <label for="teamMemberName" class="form-label">Team Member</label>
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" id="teamMemberName" placeholder="Enter name or email...">
+    <label for="team-member" class="form-label">Team Member</label>
+    <div class="input-group">
+        <input type="text" class="form-control mb-1" id="team-member" placeholder="Enter name or email...">
         <span class="input-group-text bg-primary border-primary text-white">
             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
           stroke-linecap="round" stroke-linejoin="round">
@@ -38,6 +42,14 @@
         </span>
 
     </div>
+
+    <div class="mb-3">
+            
+        @error('invited_user_id')
+        <small class="text-danger">The team member is required.</small>
+        @enderror
+    </div>
+
 
     <div id="users-list" class="list-group mb-3 d-none"></div>
 
@@ -97,7 +109,7 @@
             
             const radioBtn = document.createElement('input');
             radioBtn.type = 'radio';
-            radioBtn.name = 'user_id';
+            radioBtn.name = 'invited_user_id';
             radioBtn.value = user.id;
             radioBtn.id = user.id;
             radioBtn.classList.add('form-check-input')
@@ -110,7 +122,7 @@
         });
     }
 
-    document.getElementById('teamMemberName').addEventListener('input', function () {
+    document.getElementById('team-member').addEventListener('input', function () {
         const inputValue = this.value.trim();
         if (inputValue.length) {
             displayUsers(inputValue);

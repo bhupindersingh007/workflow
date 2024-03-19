@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invitation;
 use Illuminate\Http\Request;
 use App\Models\Project;
 
@@ -21,7 +22,7 @@ class TeamMemberController extends Controller
      */
     public function create()
     {
-
+        // projects created by logged in user
         $projects = Project::select(['id', 'title', 'created_by'])->where('created_by', auth()->id())->latest()->get();
         
         return view('team-members.create', compact('projects'));
@@ -33,7 +34,21 @@ class TeamMemberController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        
+        $validatedData = $request->validate([
+            'project_id' => 'required|exists:projects,id',
+            'invited_user_id' => 'required|exists:users,id'
+        ]);
+
+        // default invitation status is pending
+        $validatedData['status'] = 'pending';
+
+        $validatedData['assigned_by'] = auth()->id();
+
+        Invitation::create($validatedData);
+
+        return back()->with('success', 'Invitation Sent.');
+
     }
 
     /**
