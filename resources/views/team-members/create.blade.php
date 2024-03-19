@@ -32,7 +32,7 @@
 
     <label for="team-member" class="form-label">Team Member</label>
     <div class="input-group">
-        <input type="text" class="form-control mb-1" id="team-member" placeholder="Enter name or email...">
+        <input type="text" class="form-control" id="team-member" placeholder="Enter name or email...">
         <span class="input-group-text bg-primary border-primary text-white">
             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
           stroke-linecap="round" stroke-linejoin="round">
@@ -43,7 +43,7 @@
 
     </div>
 
-    <div class="mb-3">
+    <div class="mt-1 mb-3">
             
         @error('invited_user_id')
         <small class="text-danger">The team member is required.</small>
