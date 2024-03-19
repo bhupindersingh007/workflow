@@ -12,6 +12,7 @@ use App\Http\Controllers\ProjectTaskController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TaskCommentController;
 use App\Http\Controllers\TeamMemberController;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
     // team members
     Route::resource('team-members', TeamMemberController::class)->only('index', 'create', 'store');
 
+    // users api
+    Route::get('api/users', UserController::class)->name('users.index');
 
 });
-

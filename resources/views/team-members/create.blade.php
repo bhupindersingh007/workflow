@@ -18,11 +18,11 @@
 
     <div class="mb-3">
         <label for="project" class="form-label">Project Name</label>
-        <select class="form-select" id="project">
-            <option selected>Choose...</option>
-            <option value="project1">Project 1</option>
-            <option value="project2">Project 2</option>
-            <option value="project3">Project 3</option>
+        <select class="form-select" id="project_id" name="project_id">
+            <option value="" selected disabled>Choose...</option>
+            @foreach ($projects as $project)
+              <option value="{{ $project->id }}">{{ $project->title }}</option>
+            @endforeach
         </select>
     </div>
 
@@ -54,39 +54,52 @@
 @push('scripts')
 
 <script>
-    // Dummy user data
-    const usersData = [
-        { name: 'John Doe', email: 'john.doe@example.com' },
-        { name: 'Jane Smith', email: 'jane.smith@example.com' },
-        { name: 'Michael Johnson', email: 'michael.johnson@example.com' },
-        { name: 'Sarah Williams', email: 'sarah.williams@example.com' },
-        { name: 'David Brown', email: 'david.brown@example.com' }
-    ];
 
-    function displayUsers(inputValue) {
+    const url = `{{ route('users.index') }}`;
+   
+    async function displayUsers(inputValue) {
+
+        const response = await fetch(`${url}?search=${inputValue}`, {
+            headers: {
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+        }
+
+        // users data
+        let usersData = await response.json();
+
         const usersList = document.getElementById('users-list');
 
         usersList.classList.remove('d-none');
         usersList.innerHTML = '';
 
-        const filteredUsers = usersData.filter(user =>
-            user.name.toLowerCase().includes(inputValue.toLowerCase()) ||
-            user.email.toLowerCase().includes(inputValue.toLowerCase())
-        );
+        if(usersData.length == 0){ 
+            
+            const notFound = document.createElement('p');
+            notFound.textContent = `The user you're searching for is not in our records.`;
+            notFound.classList.add('text-danger');
+            usersList.appendChild(notFound);
+        }
 
-        filteredUsers.forEach(user => {
+    
+        usersData.forEach(user => {
 
             const label = document.createElement('label');
-            label.textContent = `${user.name} (${user.email})`;
+            label.textContent = `${user.first_name} ${user.last_name} (${user.email})`;
             label.classList.add('ms-2');
             label.htmlFor = user.email;
             
             
             const radioBtn = document.createElement('input');
             radioBtn.type = 'radio';
-            radioBtn.name = 'selectedUser';
-            radioBtn.value = user.email;
-            radioBtn.id = user.email;
+            radioBtn.name = 'user_id';
+            radioBtn.value = user.id;
+            radioBtn.id = user.id;
             radioBtn.classList.add('form-check-input')
 
             const div = document.createElement('div');
@@ -99,7 +112,7 @@
 
     document.getElementById('teamMemberName').addEventListener('input', function () {
         const inputValue = this.value.trim();
-        if (inputValue.length > 0) {
+        if (inputValue.length) {
             displayUsers(inputValue);
         } else {
             const usersList = document.getElementById('users-list');

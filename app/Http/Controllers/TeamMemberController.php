@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class TeamMemberController extends Controller
 {
@@ -11,6 +12,7 @@ class TeamMemberController extends Controller
      */
     public function index()
     {
+
         return view('team-members.index');
     }
 
@@ -19,7 +21,11 @@ class TeamMemberController extends Controller
      */
     public function create()
     {
-        return view('team-members.create');
+
+        $projects = Project::select(['id', 'title', 'created_by'])->where('created_by', auth()->id())->latest()->get();
+        
+        return view('team-members.create', compact('projects'));
+
     }
 
     /**
@@ -27,7 +33,7 @@ class TeamMemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**
