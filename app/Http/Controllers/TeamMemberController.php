@@ -17,7 +17,7 @@ class TeamMemberController extends Controller
         // list all invitations sent by logged in user with user and project information
 
         $invitationsQuery = Invitation::with([
-            'invited_user_id' => function ($query) { $query->select('id', 'first_name', 'last_name', 'email'); },
+            'invitedUser' => function ($query) { $query->select('id', 'first_name', 'last_name', 'email'); },
             'project' => function ($query) { $query->select('id', 'title', 'slug'); }
             ])
             ->where('assigned_by', auth()->id())

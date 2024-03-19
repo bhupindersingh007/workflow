@@ -13,6 +13,10 @@ class Invitation extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'created_at' => 'date'
+    ];
+
     
     public function project()
     {
@@ -21,7 +25,7 @@ class Invitation extends Model
     }  
     
     
-    public function user()
+    public function invitedUser()
     {
         return $this->belongsTo(User::class, 'invited_user_id');
 
