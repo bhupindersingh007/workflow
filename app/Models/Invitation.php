@@ -30,7 +30,15 @@ class Invitation extends Model
     {
         return $this->belongsTo(User::class, 'invited_user_id');
 
-    }    
+    }   
+    
+    
+    public function invitedBy()
+    {
+        return $this->belongsTo(User::class, 'assigned_by');
+
+    }   
+
 
     // Invitations Status Colors
 
