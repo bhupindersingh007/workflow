@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Invitation extends Model
 {
@@ -46,6 +47,25 @@ class Invitation extends Model
         return $colors[$key];
 
     }
+
+
+    // Search Invitations
+
+    public function scopeSearchInvitations(Builder $query, string $search)
+    {
+
+        $query->Where('status', 'LIKE', "%$search%")
+            ->orWhereHas('project', function ($query) use ($search) {
+                $query->where('title', 'LIKE', "%$search%");
+            })
+            ->orWhereHas('invitedUser', function ($query) use ($search) {
+                $query->where('first_name', 'LIKE', "%$search%")
+                    ->orWhere('last_name', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%");
+            });
+
+    }
+
 
 
 }

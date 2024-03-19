@@ -26,7 +26,7 @@ class TeamMemberController extends Controller
 
         if($request->filled('search')) {
 
-            $invitationsQuery->searchTasks($request->search)->paginate(20);
+            $invitationsQuery->searchInvitations($request->search)->paginate(20);
 
         }
 
