@@ -47,8 +47,7 @@
   <table class="table table-striped border">
     <thead class="small">
     <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <th>Team Member</th>
       <th>Project</th>
       <th>Invitation Status</th>
       <th>Email Address</th>
@@ -59,8 +58,7 @@
         
       @foreach ($invitations as $invitation)
       <tr>
-        <td>{{ $invitation->invitedUser->first_name }}</td>
-        <td>{{ $invitation->invitedUser->last_name }}</td>
+        <td>{{ $invitation->invitedUser->fullName }}</td>
         <td><a href="https://example.com/project-a" class="text-body">{{ Str::limit($invitation->project->title, 20) }}</a></td>
         <td>
           <span class="text-{{ App\Models\Invitation::colors($invitation->status) }}">&#9679;</span> {{ ucwords($invitation->status) }}  
