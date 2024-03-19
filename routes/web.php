@@ -13,6 +13,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TaskCommentController;
 use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\InvitationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,5 +63,10 @@ Route::middleware(['auth'])->group(function () {
 
     // users api
     Route::get('api/users', UserController::class)->name('users.index');
+
+
+    // user invitations
+    Route::resource('invitations', InvitationController::class)->only('index', 'update');
+
 
 });

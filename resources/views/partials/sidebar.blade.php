@@ -38,6 +38,11 @@
       </a>
 
       
+      <a href="{{ route('invitations.index') }}" class="list-group-item list-group-item-action border-0 d-flex align-items-center {{ request()->routeIs('invitations.*') ? 'active' : '' }}">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span class="ms-2">Invitations</span>
+      </a>
+      
   
       <button 
       class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center
