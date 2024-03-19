@@ -11,10 +11,29 @@ class TeamMemberController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        return view('team-members.index');
+        // list all invitations sent by logged in user with user and project information
+
+        $invitationsQuery = Invitation::with([
+            'invited_user_id' => function ($query) { $query->select('id', 'first_name', 'last_name', 'email'); },
+            'project' => function ($query) { $query->select('id', 'title', 'slug'); }
+            ])
+            ->where('assigned_by', auth()->id())
+            ->orderBy('created_at');
+
+
+        if($request->filled('search')) {
+
+            $invitationsQuery->searchTasks($request->search)->paginate(20);
+
+        }
+
+        $invitations = $invitationsQuery->paginate(20)->withQueryString();
+
+
+        return view('team-members.index', ['invitations' => $invitations]);
     }
 
     /**
