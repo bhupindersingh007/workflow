@@ -47,9 +47,10 @@
 
                     {{-- accept invite --}}
 
-                    <form action="#" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
+                    <form action="{{ route('invitations.update', ['invitation' => $invitation]) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
                         @csrf
-                        @method('DELETE')
+                        @method('PUT')
+                        <input type="hidden" name="status" value="accepted">
                         <button type="submit" class="btn btn-sm" title="Accept Invitation">
                             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -62,9 +63,10 @@
 
                     {{-- decline invite --}}
 
-                    <form action="#" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
+                    <form action="{{ route('invitations.update', ['invitation' => $invitation]) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
                         @csrf
-                        @method('DELETE')
+                        @method('PUT')
+                        <input type="hidden" name="status" value="declined">
                         <button type="submit" class="btn btn-sm text-danger" title="Decline Invitation">
                             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
