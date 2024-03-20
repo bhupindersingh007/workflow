@@ -11,6 +11,9 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectTaskController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TaskCommentController;
+use App\Http\Controllers\TeamMemberController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\InvitationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +58,15 @@ Route::middleware(['auth'])->group(function () {
     // task comments
     Route::resource('tasks.comments', TaskCommentController::class)->except('index', 'create');
 
+    // team members
+    Route::resource('team-members', TeamMemberController::class)->only('index', 'create', 'store', 'destroy');
+
+    // users api
+    Route::get('api/users', UserController::class)->name('users.index');
+
+
+    // user invitations
+    Route::resource('invitations', InvitationController::class)->only('index', 'update');
+
 
 });
-
