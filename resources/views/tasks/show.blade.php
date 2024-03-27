@@ -74,6 +74,30 @@
 </table>
 
 
+{{-- mark task as done --}}
+
+<div class="alert alert-primary d-flex align-items-center justify-content-between py-2 mb-4">
+  <span class="d-flex align-items-center">
+    
+        <svg class="me-1" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
+            fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 11 12 14 22 4"></polyline>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+
+        <span>Would you like to mark the task as done now?</span>
+   
+   </span>
+  
+  <form action="#" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
+    @csrf
+    @method('PUT')
+    
+    <button type="submit" class="btn btn-primary">Done</button>
+    
+</form>
+</div>
+
 
 
 
