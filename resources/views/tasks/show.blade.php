@@ -3,7 +3,11 @@
 
 <header class="d-flex justify-content-between align-items-center mb-4">
     <h5 class="mb-0">{{ Str::limit($task->title, 25)}}</h5>
+    <div>
+        
+    <a class="btn btn-sm btn-primary" href="{{ route('tasks.edit', ['task' => $task]) }}">Edit</a>
     <a class="btn btn-sm btn-primary" href="{{ route('projects.tasks', ['project' => $task->project]) }}">Back</a>
+    </div>
 </header>
 
 
