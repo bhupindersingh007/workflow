@@ -82,10 +82,9 @@
   
           {{-- mark task as done --}}
 
-          <form action="#" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
+          <form action="{{ route('task.complete.store', ['task' => $task]) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
               @csrf
-              @method('PUT')
-              <input type="hidden" name="status" value="accepted">
+              <input type="hidden" name="status" value="done">
               <button type="submit" class="btn btn-sm" title="Done">
                   <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2"
                       fill="none" stroke-linecap="round" stroke-linejoin="round">

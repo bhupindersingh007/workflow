@@ -89,12 +89,12 @@
    
    </span>
   
-  <form action="#" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
+  <form action="{{ route('task.complete.store', ['task' => $task]) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
     @csrf
-    @method('PUT')
+    <input type="hidden" value="done" name="status">
     
     <button type="submit" class="btn btn-primary">Done</button>
-    
+
 </form>
 </div>
 
