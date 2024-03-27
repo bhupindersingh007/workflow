@@ -29,6 +29,7 @@
       <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center">
         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
         <span class="ms-2">Inbox</span>
+        <span class="badge rounded-pill bg-primary ms-1">0</span>
       </a>
   
       
@@ -41,6 +42,7 @@
       <a href="{{ route('invitations.index') }}" class="list-group-item list-group-item-action border-0 d-flex align-items-center {{ request()->routeIs('invitations.*') ? 'active' : '' }}">
         <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
         <span class="ms-2">Invitations</span>
+        <span class="badge rounded-pill bg-primary ms-1">0</span>
       </a>
       
   
