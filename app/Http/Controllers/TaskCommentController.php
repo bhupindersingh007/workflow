@@ -11,6 +11,12 @@ class TaskCommentController extends Controller
 {
     
 
+    public function __construct()
+    {
+        $this->authorizeResource(TaskComment::class, 'comment');
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
