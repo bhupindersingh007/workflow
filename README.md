@@ -35,7 +35,7 @@
          
 ## Installation
 
-**Requirements**: PHP 8.1, Composer, RDBMS (such as MySQL, MariaDB, PostgreSQL, etc.)
+**Requirements**: PHP >= 8.1, Composer, RDBMS (such as MySQL, MariaDB, PostgreSQL, etc.)
 
 **Installation Steps:**
 
