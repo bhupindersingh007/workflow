@@ -4,15 +4,15 @@
 
 ## Features
 
-- User Authentication : User can register, login and logout.
-- Projects : A user with a valid workflow account can create a number of projects with unlimited tasks in it.
-- Tasks : A project owner/creator can assign tasks to team members to complete the given task.
-- Comment System : Task assignee and assignor can communicate with each other by (2 way) task comment system.
-- User Settings : A user can update the account information like name, email and password.
-- Project Invitation : A project owner can invite other users to be a part of the project.
-- Dashboard Widgets: Summary of important information at the user dashbaord's home.
-- Notification System : Built-in notification system when the task is updated, on new comment, new team member invitation and when user accepts or rejects invitation.
-- Search System : Users can search projects, tasks, team members, invitations.
+- **User Authentication**: User can register, login and logout.
+- **Projects**: A user with a valid workflow account can create a number of projects with unlimited tasks in it.
+- **Tasks**: A project owner/creator can assign tasks to team members to complete the given task.
+- **Comment System**: Task assignee and assignor can communicate with each other by (2 way) task comment system.
+- **User Settings**: A user can update the account information like name, email and password.
+- **Project Invitation**: A project owner can invite other users to be a part of the project.
+- **Dashboard Widgets**: Summary of important information at the user dashbaord's home.
+- **Notification System**: Built-in notification system when the task is updated, on new comment, new team member invitation and when user accepts or rejects invitation.
+- **Search System**: Users can search projects, tasks, team members, invitations.
 
 ## Showcase
 
