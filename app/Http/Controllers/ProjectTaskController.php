@@ -15,6 +15,10 @@ class ProjectTaskController extends Controller
     public function __invoke(Request $request, Project $project)
     {
 
+        // only project owner can see all tasks assigned
+        $this->authorize('update', $project);
+
+
         $statuses = Task::statuses();
         $priorities = Task::priorities();
 

@@ -14,6 +14,7 @@ use App\Http\Controllers\TaskCommentController;
 use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\TaskCompletionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('projects/{project:slug}/tasks', ProjectTaskController::class)->name('projects.tasks');
 
     Route::resource('tasks', TaskController::class);
+
+    // mark task as done
+    Route::match(['get', 'post'], '/tasks/{task}/task-complete', TaskCompletionController::class)->name('task.complete.store');
+
 
     // task comments
     Route::resource('tasks.comments', TaskCommentController::class)->except('index', 'create');

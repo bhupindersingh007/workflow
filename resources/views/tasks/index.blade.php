@@ -78,6 +78,25 @@
 
         <td>{{ $task->assignedBy->fullName }}</td>
         <td>
+
+  
+          {{-- mark task as done --}}
+
+          @if($task->status != 'done')
+
+            <form action="{{ route('task.complete.store', ['task' => $task]) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
+                @csrf
+                <input type="hidden" name="status" value="done">
+                <button type="submit" class="btn btn-sm" title="Done">
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 11 12 14 22 4"></polyline>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                </button>
+            </form>
+
+          @endif
           
           <a class="btn btn-sm" href="{{ route('tasks.show', ['task' => $task]) }}">
             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>

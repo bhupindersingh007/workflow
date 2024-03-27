@@ -27,9 +27,9 @@
         <div class="col-md-6 mb-3">
             <label for="assignedTo" class="form-label">Assigned To</label>
             <select class="form-select" id="assigned_to" name="assigned_to">
-                <option value="" selected>Choose...</option>
+                <option value="" disabled selected>Choose...</option>
                 @foreach ($members as $member)
-                  <option value="{{ $member->id }}" {{ $member->id = $task->assigned_to ? 'selected' : '' }}>
+                  <option value="{{ $member->id }}" {{ $member->id == $task->assigned_to ? 'selected' : '' }}>
                     {{ $member->fullName }}
                 </option>
                 @endforeach
