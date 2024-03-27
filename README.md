@@ -1,6 +1,7 @@
 ## Introduction
 **WORKFLOW** - A Project Management SAAS application built with PHP, Laravel, Vite, Bootstrap & MySQL.
 
+![WORKFLOW](https://github.com/bhupindersingh007/workflow/assets/63149405/a1cb4c88-6fdc-4455-891b-47af9eae940c)
 
 ## Features
 
