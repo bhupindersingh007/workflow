@@ -48,7 +48,10 @@
 4. Make a new ```.env``` file and copy ```.env.example``` file to ```.env```.
 5. Set the database configuration in the ``.env`` like ```DB_DATABASE, DB_USERNAME and DB_PASSWORD```.
 7. Generate key: ```php artisan key:generate```.
-9. Run the application: ```php artisan serve```.
+8. Run ```php artisan migrate:refresh --seed```
+9. Run ```npm i``` and ```npm build```.
+10. Run the application: ```php artisan serve```.
+    
 
 
 
