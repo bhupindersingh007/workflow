@@ -43,7 +43,7 @@
 
                     {{-- accept invite --}}
 
-                    <form action="{{ route('invitations.update', ['invitation' => $invitation]) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
+                    <form action="{{ route('invitations.update', ['invitation' => $invitation]) }}" method="POST" class="d-inline-block" onsubmit="confirmSubmit(this);">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="status" value="accepted">
@@ -59,7 +59,7 @@
 
                     {{-- decline invite --}}
 
-                    <form action="{{ route('invitations.update', ['invitation' => $invitation]) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
+                    <form action="{{ route('invitations.update', ['invitation' => $invitation]) }}" method="POST" class="d-inline-block" onsubmit="confirmSubmit(this);">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="status" value="declined">

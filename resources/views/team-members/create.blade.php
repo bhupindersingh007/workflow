@@ -12,7 +12,7 @@
 
 {{-- Invite New Team Member --}}
 
-<form action="{{ route('team-members.store') }}" method="POST" onsubmit="return confirm('Are you sure?');">
+<form action="{{ route('team-members.store') }}" method="POST" onsubmit="confirmSubmit(this);">
 
     @csrf
 

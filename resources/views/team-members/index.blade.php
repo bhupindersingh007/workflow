@@ -70,7 +70,7 @@
         
         <td>
           <form action="{{ route('team-members.destroy', ['team_member'  => $invitation->id ]) }}" method="POST" class="d-inline-block"
-          onsubmit="return confirm('Are you sure?');">
+          onsubmit="confirmSubmit(this);">
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-sm text-danger">
