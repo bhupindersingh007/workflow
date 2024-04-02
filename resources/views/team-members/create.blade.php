@@ -21,7 +21,7 @@
         <select class="form-select mb-1" id="project_id" name="project_id">
             <option value="" selected disabled>Choose...</option>
             @foreach ($projects as $project)
-              <option value="{{ $project->id }}">{{ $project->title }}</option>
+              <option value="{{ $project->id }}" {{ $project->id == old('project_id') ? 'selected' : '' }}>{{ $project->title }}</option>
             @endforeach
         </select>
         
@@ -47,6 +47,11 @@
             
         @error('invited_user_id')
         <small class="text-danger">The team member is required.</small>
+        @enderror
+
+        
+        @error('error_message')
+        <small class="text-danger">{{ $message }}</small>
         @enderror
     </div>
 
