@@ -105,7 +105,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Delete'
+                confirmButtonText: 'Yes'
             }).then((result) => {
                 if (result.isConfirmed) {
                     form.submit();
