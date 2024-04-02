@@ -156,7 +156,10 @@
                     <span class="fw-bold">Latest Tasks - Assigned</span>
                 </span>
 
-                <a href="{{ route('tasks.index') }}" class="text-muted">View More</a>
+                @if ($latestTasksAssigned->count() > 0)
+                    <a href="{{ route('tasks.index') }}" class="text-muted">View More</a>
+                @endif
+
             </div>
             <div class="card-body px-0">
                 @if ($latestTasksAssigned->count() > 0)
@@ -172,9 +175,16 @@
                         @foreach ($latestTasksAssigned as $task)
                         <tr>
                             <td class="ps-3">
-                                <span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span>
+        
+                                @isset($task->status)
+                                    <span class="text-{{ App\Models\Task::colors($task->status) }}">&#9679;</span>
+                                @endisset
+    
                                 <a href="{{ route('tasks.show', ['task' => $task]) }}" class="text-body text-decoration-none">{{ Str::limit($task->title, 20) }}</a>
                             </td>
+
+                    
+
                             <td>{{ $task->deadline_date ? $task->deadline_date->format('d M, Y') : '' }}</td>
                             <td>
                                 <a href="{{ route('projects.show', ['project' => $task->project]) }}"

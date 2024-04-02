@@ -84,7 +84,7 @@
 
           @if($task->status != 'done')
 
-            <form action="{{ route('task.complete.store', ['task' => $task]) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure?');">
+            <form action="{{ route('task.complete.store', ['task' => $task]) }}" method="POST" class="d-inline-block" onsubmit="confirmSubmit(this);">
                 @csrf
                 <input type="hidden" name="status" value="done">
                 <button type="submit" class="btn btn-sm" title="Done">

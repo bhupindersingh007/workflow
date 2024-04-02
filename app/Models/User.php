@@ -63,4 +63,12 @@ class User extends Authenticatable
     }
 
 
+    public function pendingInvitations(){
+
+        return $this->hasMany(Invitation::class, 'invited_user_id')->where('status', 'pending');
+        
+    }
+    
+
+
 }

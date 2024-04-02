@@ -5,7 +5,7 @@
 
 <hr>
 
-<form action="{{ route('change.password.store') }}" method="POST" onsubmit="return confirm('Are you sure?');">
+<form action="{{ route('change.password.store') }}" method="POST" onsubmit="confirmSubmit(this);">
 
     @csrf
 

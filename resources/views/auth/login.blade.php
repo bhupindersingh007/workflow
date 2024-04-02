@@ -2,9 +2,13 @@
 
 @section('content')
 
-<div class="container mt-5 pb-5">
+<div class="container mt-5 mb-3 mb-md-4 pb-5" style="min-height: 70vh;">
     <div class="row justify-content-center">
         <div class="col-md-6">
+
+            <h2 class="text-center fw-bold mb-3" style="letter-spacing: 0.08rem">  
+                <span class="text-primary">WORK</span>FLOW
+            </h2>
 
             <h4>Login</h4>
             <hr>

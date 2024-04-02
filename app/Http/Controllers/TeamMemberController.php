@@ -54,10 +54,51 @@ class TeamMemberController extends Controller
     public function store(Request $request)
     {
         
+        
+        
         $validatedData = $request->validate([
             'project_id' => 'required|exists:projects,id',
             'invited_user_id' => 'required|exists:users,id'
         ]);
+
+
+
+        // if user have invite in pending status
+
+        $invitation = Invitation::where([
+            'project_id' => $request->project_id,
+            'invited_user_id' => $request->invited_user_id,
+        ])->latest()->first();
+
+
+        if($invitation && $invitation->status == 'pending'){
+            
+            return back()->withErrors(['error_message' => 'Invitation sent but not yet accepted.'])->withInput();
+
+        }
+
+
+        if($invitation && $invitation->status == 'accepted'){
+            
+            return back()->withErrors(['error_message' => 'Invitation already accepted.'])->withInput();
+
+        }
+
+
+        $project = Project::where([
+            'id' => $request->project_id,
+            'created_by'=> $request->invited_user_id,
+        ])->first();
+
+        if($project){
+            
+            return back()->withErrors([
+                'error_message' => 'User is project owner, no invitation needed.'
+            ])->withInput();
+            
+        }
+
+    
 
         // default invitation status is pending
         $validatedData['status'] = 'pending';

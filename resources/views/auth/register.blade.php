@@ -6,6 +6,11 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
 
+
+            <h2 class="text-center fw-bold mb-3" style="letter-spacing: 0.08rem">  
+                <span class="text-primary">WORK</span>FLOW
+            </h2>
+
             <h4>Register</h4>
 
             <hr>

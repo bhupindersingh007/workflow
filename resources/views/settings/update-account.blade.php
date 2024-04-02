@@ -4,7 +4,7 @@
 <h5>Update Account</h5>
 <hr>
 
-<form action="{{ route('update.account.store') }}" method="POST" onsubmit="return confirm('Are you sure?');">
+<form action="{{ route('update.account.store') }}" method="POST" onsubmit="confirmSubmit(this);">
 
     @csrf
 
