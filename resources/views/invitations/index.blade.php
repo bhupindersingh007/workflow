@@ -86,7 +86,7 @@
 </div>
 
 @else
-<div class="alert alert-primary">No Invitations.</div>
+<div class="alert alert-primary">No Pending Invitations.</div>
 @endif
 
 
