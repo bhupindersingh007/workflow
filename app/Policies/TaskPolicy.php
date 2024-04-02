@@ -42,10 +42,12 @@ class TaskPolicy
     public function update(User $user, Task $task): bool
     {
         
-        // if the current user is either the task assigner or the assignee
-
-        return (auth()->id() == $task->assigned_by || auth()->id() == $task->assigned_to);
-        
+        // if the current user is either the task assigner, the assignee or project owner
+        return (
+            auth()->id() == $task->assigned_by 
+            || auth()->id() == $task->assigned_to 
+            || auth()->id() == $task->project->created_by
+        );
         
     }
 
