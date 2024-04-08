@@ -12,7 +12,11 @@ class NotificationController extends Controller
     public function __invoke(Request $request) 
     {
 
-       return view("notifications.index");
+       // unread notifications
+          
+       $notifications = auth()->user()->unreadNotifications; 
+
+       return view("notifications.index", compact('notifications'));
 
     }
 }
