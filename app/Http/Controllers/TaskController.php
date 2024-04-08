@@ -108,7 +108,17 @@ class TaskController extends Controller
     {
         $statuses = Task::statuses();
         $priorities = Task::priorities();
-        $members = User::orderBy('first_name')->get();
+
+        $project = $task->project;
+        
+        // project members
+        $members = User::whereHas('invitations', function ($query) use ($project) {
+            $query->where('project_id', $project->id)->where('status', 'accepted');
+        })
+        ->orderBy('first_name')->get();
+        
+        // add project as team member
+        $members->push(auth()->user());
 
 
         return view('tasks.edit', compact('statuses', 'priorities', 'members', 'task'));
