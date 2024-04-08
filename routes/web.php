@@ -15,6 +15,7 @@ use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\TaskCompletionController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,10 @@ Route::middleware(['auth'])->group(function () {
 
     // user invitations
     Route::resource('invitations', InvitationController::class)->only('index', 'update');
+
+    // notifications
+    Route::get('notifications', NotificationController::class)->name('notifications.index');
+
 
 
 });
