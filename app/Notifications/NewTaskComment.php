@@ -6,17 +6,20 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\Task;
 
 class NewTaskComment extends Notification
 {
     use Queueable;
 
+    private $task;
+
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(Task $task)
     {
-        //
+        $this->task = $task;
     }
 
     /**
@@ -45,7 +48,11 @@ class NewTaskComment extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'task_id' => $this->task->id,
+            'task_title' => $this->task->title,
+            'project_id' => $this->task->project->id,
+            'project_title' => $this->task->project->title,
+            'comment_by' => auth()->user()->fullName,
         ];
     }
 }

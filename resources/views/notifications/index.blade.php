@@ -17,7 +17,7 @@
 @if ($notifications->count() > 0)
     
     @foreach ($notifications as $notification)
-        <div class="card border-0 shadow-sm mb-4">
+        <div class="card mb-4">
         <header class="card-header bg-white py-3 d-flex align-items-center justify-content-between">
             
             <span>
@@ -25,6 +25,8 @@
 
                 @if ($notification->type == App\Notifications\NewTask::class)
                     <span class="badge bg-primary">Task</span>
+                @elseif ($notification->type == App\Notifications\NewTaskComment::class)
+                    <span class="badge bg-primary">Comment</span>
                 @endif
                 
                  &bull;
@@ -40,15 +42,27 @@
         </header>
         
         <div class="card-body">
+
             @if ($notification->type == App\Notifications\NewTask::class)
-            <span>{{ $notification->data['assignor_name'] }}</span> 
-            &bull; 
-            assigned a new <strong>task</strong>:
-            <a href="{{ route('tasks.show', ['task' => $notification->data['task_id'] ]) }}" class="text-body">{{ $notification->data['task_title'] }}</a>
-            from the <strong>project</strong>:
-            <a href="{{ route('projects.show', ['project' => $notification->data['project_id'] ]) }}" class="text-body">{{ $notification->data['project_title']}}</a>
-        @endif
+
+                <span>{{ $notification->data['assignor_name'] }}</span> 
+                &bull; 
+                assigned a new <strong>task</strong>:
+                <a href="{{ route('tasks.show', ['task' => $notification->data['task_id'] ]) }}" class="text-body">{{ $notification->data['task_title'] }}</a>
+                from the <strong>project</strong>:
+                <a href="{{ route('projects.show', ['project' => $notification->data['project_id'] ]) }}" class="text-body">{{ $notification->data['project_title']}}</a>
+            
+            @elseif ($notification->type == App\Notifications\NewTaskComment::class)
         
+                <span>{{ $notification->data['comment_by'] }}</span> 
+                &bull; 
+                commented on <strong>task</strong>:
+                <a href="{{ route('tasks.show', ['task' => $notification->data['task_id'] ]) }}" class="text-body">{{ $notification->data['task_title'] }}</a>
+                from the <strong>project</strong>:
+                <a href="{{ route('projects.show', ['project' => $notification->data['project_id'] ]) }}" class="text-body">{{ $notification->data['project_title']}}</a>
+            
+            @endif
+            
         </div>
     </div>
     @endforeach
