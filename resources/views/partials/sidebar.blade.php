@@ -29,7 +29,7 @@
       <a href="{{ route('notifications.index') }}" class="list-group-item list-group-item-action border-0 d-flex align-items-center {{ request()->routeIs('notifications.*') ? 'active' : '' }}">
         <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
         <span class="ms-2">Inbox</span>
-        <span class="badge rounded-pill ms-auto {{ request()->routeIs('notifications.*') ? 'bg-white text-body' : 'bg-danger' }}">0</span>
+        <span class="badge rounded-pill ms-auto {{ request()->routeIs('notifications.*') ? 'bg-white text-body' : 'bg-danger' }}">{{ auth()->user()->unreadNotifications->count() }}</span>
       </a>
   
       
