@@ -68,11 +68,65 @@
     @endforeach
 
 @else
-    <div class="alert bg-white shadow-sm py-3">
-        <i class="feather icon-bell bg-primary p-1 rounded me-1 text-white"></i>
+    <div class="alert alert-primary">
         No new notifications
     </div>
 @endif
 
 
 @endsection
+
+
+@push('scripts')
+<script>
+  
+  function sendMarkRequest(id = null) {
+
+    const url = `{{ route('notifications.mark') }}`;
+    const csrf_token = `{{ csrf_token() }}`;
+
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': csrf_token
+        },
+        body: JSON.stringify({ id })
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.mark-as-read').forEach(function(element) {
+        element.addEventListener('click', function() {
+            let id = this.getAttribute('data-id');
+            let request = sendMarkRequest(id);
+            request.then(function(response) {
+                if (response.ok) {
+                    element.parentElement.parentElement.style.display = 'none';
+                } else {
+                    console.error('Failed to mark notification as read');
+                }
+            }).catch(function(error) {
+                console.error('Error occurred:', error);
+            });
+        });
+    });
+
+    document.getElementById('mark-all').addEventListener('click', function() {
+        let request = sendMarkRequest();
+        request.then(function(response) {
+            if (response.ok) {
+                document.querySelectorAll('.card').forEach(function(card) {
+                    card.style.display = 'none';
+                });
+            } else {
+                console.error('Failed to mark all notifications as read');
+            }
+        }).catch(function(error) {
+            console.error('Error occurred:', error);
+        });
+    });
+});
+   
+</script>
+@endpush
