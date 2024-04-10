@@ -96,16 +96,25 @@
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+   
     document.querySelectorAll('.mark-as-read').forEach(function(element) {
         element.addEventListener('click', function() {
             let id = this.getAttribute('data-id');
             let request = sendMarkRequest(id);
             request.then(function(response) {
                 if (response.ok) {
-                    element.parentElement.parentElement.style.display = 'none';
-                } else {
-                    console.error('Failed to mark notification as read');
-                }
+                    response.json().then(function(data) {
+                        console.log(data.unread_notifications);
+                        document.getElementById('unread-notifications-count').textContent = data.unread_notifications; 
+                        document.getElementById('unread-notifications-count-bell').textContent = data.unread_notifications; 
+                        element.parentElement.parentElement.style.display = 'none';
+                    }).catch(function(error) {
+
+                        console.error('Error parsing JSON:', error);
+                });
+            } else {
+                console.error('Failed to mark notification as read');
+            }
             }).catch(function(error) {
                 console.error('Error occurred:', error);
             });

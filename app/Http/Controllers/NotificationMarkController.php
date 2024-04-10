@@ -25,7 +25,12 @@ class NotificationMarkController extends Controller
             })
             ->markAsRead();
             
-        return response()->noContent();
+        $count = auth()->user()->unreadNotifications->count();    
+
+
+        return response()->json([
+                'unread_notifications' => ($count - 1)
+            ]);
 
     }
 
