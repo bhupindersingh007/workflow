@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Notifications\NewTask;
 
 class TaskController extends Controller
 {
@@ -71,7 +72,18 @@ class TaskController extends Controller
             $validatedData['assigned_by'] = auth()->id();
         }
 
-        Task::create($validatedData);
+
+        $task = Task::create($validatedData);
+
+
+        if($request->filled('assigned_to') && $request->assigned_to != auth()->id()){
+
+            // send task notification to assignee  
+            $assignee = User::findOrFail($request->assigned_to);   
+            $assignee->notify(new NewTask($task));        
+        
+        }
+
 
         return back()->with('success', 'Task is Created.');
 
@@ -96,7 +108,17 @@ class TaskController extends Controller
     {
         $statuses = Task::statuses();
         $priorities = Task::priorities();
-        $members = User::orderBy('first_name')->get();
+
+        $project = $task->project;
+        
+        // project members
+        $members = User::whereHas('invitations', function ($query) use ($project) {
+            $query->where('project_id', $project->id)->where('status', 'accepted');
+        })
+        ->orderBy('first_name')->get();
+        
+        // add project as team member
+        $members->push(auth()->user());
 
 
         return view('tasks.edit', compact('statuses', 'priorities', 'members', 'task'));

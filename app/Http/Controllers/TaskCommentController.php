@@ -6,6 +6,7 @@ use App\Models\Task;
 use App\Models\User;
 use App\Models\TaskComment;
 use Illuminate\Http\Request;
+use App\Notifications\NewTaskComment;
 
 class TaskCommentController extends Controller
 {
@@ -32,6 +33,19 @@ class TaskCommentController extends Controller
             'user_id' => auth()->id(),
             'created_at' => now()
         ]);
+
+        // send notification to task assignee or assignor 
+
+        if($task->assigned_by == auth()->id()){
+
+            $assignee = User::findOrFail($task->assigned_to);
+            $assignee->notify(new NewTaskComment($task));
+
+        }else if($task->assigned_to == auth()->id()){
+
+            $assignor = User::findOrFail($task->assigned_by);
+            $assignor->notify(new NewTaskComment($task));
+        }
         
         return back()->with('success', 'Task Comment Created');
    
