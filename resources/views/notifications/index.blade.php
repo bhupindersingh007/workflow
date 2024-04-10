@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     response.json().then(function(data) {
                         console.log(data.unread_notifications);
                         document.getElementById('unread-notifications-count').textContent = data.unread_notifications; 
+                        document.getElementById('unread-notifications-count-bell').textContent = data.unread_notifications; 
                         element.parentElement.parentElement.style.display = 'none';
                     }).catch(function(error) {
 
