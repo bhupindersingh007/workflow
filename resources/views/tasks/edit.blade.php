@@ -56,6 +56,9 @@
         <div class="col-md-6 mb-3">
             <label for="deadline_date" class="form-label">Deadline Date</label>
             <input type="date" class="form-control" id="deadline_date" name="deadline_date" value="{{ $task->deadline_date ? $task->deadline_date->format('Y-m-d') : old('deadline_date') }}">
+            @error('deadline_date')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
         </div>
 
         <div class="col-md-6 mb-3">
