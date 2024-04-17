@@ -41,11 +41,28 @@
             --bs-table-bg-type: #f3f4f6;
         }
 
-        .form-control:focus, 
+        .form-control:focus,
         .form-select:focus {
             border-color: transparent;
             box-shadow: 0 0 0 .1rem #3d8bfffa;
-        } 
+        }
+
+        /* customize sweetalert 2 confirmation */
+
+        div:where(.swal2-icon){
+
+            width: 3rem !important;
+            height: 3rem !important;
+        }
+
+        div:where(.swal2-icon) .swal2-icon-content{
+            font-size: 3rem !important;
+        }
+
+        div:where(.swal2-container) h2:where(.swal2-title){
+            padding: 0 !important;
+        }
+
 
     </style>
 
@@ -114,7 +131,7 @@
         }
 
     </script>
-    
+
     @stack('scripts')
 
 

@@ -7,7 +7,7 @@
   @if ($notifications->count() > 0)
    <button class="btn btn-primary" id="mark-all">Mark all as Read</button>
    @else
-   <a href="{{ route('dashboard') }}" class="btn btn-secondary btn-sm">Back</a>
+   <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm" id="back">Back</a>
   @endif
 
 </header>
@@ -74,6 +74,11 @@
 @endif
 
 
+
+<div class="alert alert-primary d-none" id="no-notifications">
+    No new notifications
+</div>
+
 @endsection
 
 
@@ -125,9 +130,20 @@ document.addEventListener('DOMContentLoaded', function() {
         let request = sendMarkRequest();
         request.then(function(response) {
             if (response.ok) {
+                
                 document.querySelectorAll('.card').forEach(function(card) {
                     card.style.display = 'none';
                 });
+
+                
+                document.getElementById('unread-notifications-count').textContent = 0; 
+                document.getElementById('unread-notifications-count-bell').textContent = 0; 
+
+                document.getElementById('no-notifications').classList.remove('d-none');
+
+                document.getElementById('mark-all').classList.add('d-none');
+
+
             } else {
                 console.error('Failed to mark all notifications as read');
             }
