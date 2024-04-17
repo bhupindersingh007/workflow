@@ -2,7 +2,7 @@
 @section('content')
 
 <header class="d-flex justify-content-between align-items-center">
-    <h5 class="mb-0">Edit Task</h5>
+    <h5 class="mb-0">Update Task</h5>
     <a class="btn btn-sm btn-primary" href="{{ route('projects.tasks', ['project' => $task->project]) }}">Back</a>
 </header>
 
@@ -80,7 +80,7 @@
 
 
 
-    <button type="submit" class="btn btn-primary">Edit</button>
+    <button type="submit" class="btn btn-primary">Update</button>
 </form>
 
 @endsection
