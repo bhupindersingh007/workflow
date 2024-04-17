@@ -17,7 +17,7 @@
 </div>
 
 {{-- Form Mode Edit And Save --}}
-<button type="submit" class="btn btn-primary">{{ $mode == 'create' ? 'Save' : 'Edit' }}</button>
+<button type="submit" class="btn btn-primary">{{ $mode == 'create' ? 'Save' : 'Update' }}</button>
 
 
 @push('scripts')
