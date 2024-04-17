@@ -7,7 +7,7 @@
     <div class="container text-white py-5">
         <h1 class="mb-3 display-2 text-uppercase">Welcome to WORKFLOW</h1>
         <p class="lead mb-4">Effortless Project Management for your Teams.</p>
-        <a class="btn btn-primary btn-lg" href="http://localhost:1234/register" role="button">Get Started</a>
+        <a class="btn btn-primary btn-lg" href="{{ route('register.create') }}" role="button">Get Started</a>
     </div>
 </section>
 
