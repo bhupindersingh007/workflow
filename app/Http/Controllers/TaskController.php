@@ -133,7 +133,7 @@ class TaskController extends Controller
             'title' => 'required|max:150',
             'description' => 'nullable|max:65000',
             'assigned_to' => 'nullable|exists:users,id',
-            'deadline_date' => 'nullable|date',
+            'deadline_date' => 'nullable|date|after_or_equal:'.date('Y-m-d'),
             'status' => 'nullable|in:' . implode(',', Task::statuses()),
             'priority' => 'nullable|in:' . implode(',', Task::priorities())
         ]);

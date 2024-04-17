@@ -18,7 +18,7 @@
 
     <div class="mb-3">
         <label for="project" class="form-label">Project Name</label>
-        <select class="form-select mb-1" id="project_id" name="project_id">
+        <select class="form-select mb-1" id="project_id" name="project_id" required>
             <option value="" selected disabled>Choose...</option>
             @foreach ($projects as $project)
               <option value="{{ $project->id }}" {{ $project->id == old('project_id') ? 'selected' : '' }}>{{ $project->title }}</option>
@@ -32,7 +32,7 @@
 
     <label for="team-member" class="form-label">Team Member</label>
     <div class="input-group">
-        <input type="text" class="form-control" id="team-member" placeholder="Enter name or email...">
+        <input type="text" class="form-control" id="team-member" placeholder="Enter name or email..." required>
         <span class="input-group-text bg-primary border-primary text-white">
             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
           stroke-linecap="round" stroke-linejoin="round">

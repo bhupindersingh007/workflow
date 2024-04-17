@@ -59,8 +59,11 @@ class TaskPolicy
        
         // if the current user is either the task assigner
 
-        return auth()->id() == $task->assigned_by;
-        
+        return (
+            auth()->id() == $task->assigned_by 
+            || auth()->id() == $task->assigned_to 
+            || auth()->id() == $task->project->created_by
+        );
        
     }
 
