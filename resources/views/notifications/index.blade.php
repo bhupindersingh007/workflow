@@ -47,7 +47,7 @@
 
                 <span>{{ $notification->data['assignor_name'] }}</span> 
                 &bull; 
-                assigned a new <strong>task</strong>:
+                <strong>assigned</strong> a new <strong>task</strong>:
                 <a href="{{ route('tasks.show', ['task' => $notification->data['task_id'] ]) }}" class="text-body">{{ $notification->data['task_title'] }}</a>
                 from the <strong>project</strong>:
                 <a href="{{ route('projects.show', ['project' => $notification->data['project_id'] ]) }}" class="text-body">{{ $notification->data['project_title']}}</a>
@@ -56,7 +56,7 @@
         
                 <span>{{ $notification->data['comment_by'] }}</span> 
                 &bull; 
-                commented on <strong>task</strong>:
+                <strong>commented</strong> on <strong>task</strong>:
                 <a href="{{ route('tasks.show', ['task' => $notification->data['task_id'] ]) }}" class="text-body">{{ $notification->data['task_title'] }}</a>
                 from the <strong>project</strong>:
                 <a href="{{ route('projects.show', ['project' => $notification->data['project_id'] ]) }}" class="text-body">{{ $notification->data['project_title']}}</a>
