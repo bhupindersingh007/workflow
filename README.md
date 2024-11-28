@@ -17,23 +17,23 @@
 
 ## Showcase
 
-![image](https://github.com/bhupindersingh007/workflow/assets/63149405/52fea8bc-cbb1-4c1b-af1c-f4744659395a)
+![All Projects](https://github.com/bhupindersingh007/workflow/assets/63149405/52fea8bc-cbb1-4c1b-af1c-f4744659395a)
 
-![image](https://github.com/bhupindersingh007/workflow/assets/63149405/139fc651-5e5f-4618-a899-050f350c1209)
+![New Project](https://github.com/bhupindersingh007/workflow/assets/63149405/139fc651-5e5f-4618-a899-050f350c1209)
 
-![image](https://github.com/bhupindersingh007/workflow/assets/63149405/e91a048f-3dc5-4ecb-844f-956dca413b49)
+![New Task](https://github.com/bhupindersingh007/workflow/assets/63149405/e91a048f-3dc5-4ecb-844f-956dca413b49)
 
-![image](https://github.com/bhupindersingh007/workflow/assets/63149405/a188ff5c-de6b-448e-8c1f-036ecfd3bde3)
+![All Tasks](https://github.com/bhupindersingh007/workflow/assets/63149405/a188ff5c-de6b-448e-8c1f-036ecfd3bde3)
 
-![image](https://github.com/bhupindersingh007/workflow/assets/63149405/f02bc498-0a60-44f1-9754-840bdb43f20c)
+![Inviate a Memeber](https://github.com/bhupindersingh007/workflow/assets/63149405/f02bc498-0a60-44f1-9754-840bdb43f20c)
 
-![image](https://github.com/bhupindersingh007/workflow/assets/63149405/355322a0-62e0-470e-84ea-976ce9b2bac9)
+![Invitations](https://github.com/bhupindersingh007/workflow/assets/63149405/355322a0-62e0-470e-84ea-976ce9b2bac9)
 
-![image](https://github.com/bhupindersingh007/workflow/assets/63149405/75ba9497-081d-4edb-b87a-6a32a6e00b87)
+![Team Members](https://github.com/bhupindersingh007/workflow/assets/63149405/75ba9497-081d-4edb-b87a-6a32a6e00b87)
 
-![image](https://github.com/bhupindersingh007/workflow/assets/63149405/d3e18b84-9715-482d-a547-33caa9b7f114)
+![Update Account](https://github.com/bhupindersingh007/workflow/assets/63149405/d3e18b84-9715-482d-a547-33caa9b7f114)
 
-![image](https://github.com/bhupindersingh007/workflow/assets/63149405/0885e1bc-ffec-47e3-8039-8d6bbd1cbbe0)
+![Change Password](https://github.com/bhupindersingh007/workflow/assets/63149405/0885e1bc-ffec-47e3-8039-8d6bbd1cbbe0)
 
          
 ## Installation
