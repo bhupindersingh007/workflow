@@ -17,23 +17,46 @@
 
 ## Showcase
 
+![Home Page](https://github.com/user-attachments/assets/0a317e52-0eb3-4705-94e2-39a56b5132f7)
+
+
+### Register & Login
+
+![Register](https://github.com/user-attachments/assets/680bab00-0b7b-430b-a7d3-287ae89e72a5)
+
+![Login](https://github.com/user-attachments/assets/2e491cf8-f973-4550-aab0-fdd6b8c0fb7e)
+
+### Project
+
 ![All Projects](https://github.com/bhupindersingh007/workflow/assets/63149405/52fea8bc-cbb1-4c1b-af1c-f4744659395a)
 
 ![New Project](https://github.com/bhupindersingh007/workflow/assets/63149405/139fc651-5e5f-4618-a899-050f350c1209)
+
+### Task
 
 ![New Task](https://github.com/bhupindersingh007/workflow/assets/63149405/e91a048f-3dc5-4ecb-844f-956dca413b49)
 
 ![All Tasks](https://github.com/bhupindersingh007/workflow/assets/63149405/a188ff5c-de6b-448e-8c1f-036ecfd3bde3)
 
+### Invitaion
+
 ![Inviate a Memeber](https://github.com/bhupindersingh007/workflow/assets/63149405/f02bc498-0a60-44f1-9754-840bdb43f20c)
 
 ![Invitations](https://github.com/bhupindersingh007/workflow/assets/63149405/355322a0-62e0-470e-84ea-976ce9b2bac9)
 
+### Team Members
+
 ![Team Members](https://github.com/bhupindersingh007/workflow/assets/63149405/75ba9497-081d-4edb-b87a-6a32a6e00b87)
+
+### Notification System
 
 ![Notifications](https://github.com/user-attachments/assets/a7a3024a-6e7b-4aa0-9ef8-5b7680993dc9)
 
+### Task Commenting System
+
 ![Task Comment](https://github.com/user-attachments/assets/ee467600-8970-4949-a23d-a9620edae8ae)
+
+### Update Account
 
 ![Update Account](https://github.com/bhupindersingh007/workflow/assets/63149405/d3e18b84-9715-482d-a547-33caa9b7f114)
 
