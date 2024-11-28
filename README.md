@@ -31,6 +31,10 @@
 
 ![Team Members](https://github.com/bhupindersingh007/workflow/assets/63149405/75ba9497-081d-4edb-b87a-6a32a6e00b87)
 
+![Notifications](https://github.com/user-attachments/assets/a7a3024a-6e7b-4aa0-9ef8-5b7680993dc9)
+
+![Task Comment](https://github.com/user-attachments/assets/ee467600-8970-4949-a23d-a9620edae8ae)
+
 ![Update Account](https://github.com/bhupindersingh007/workflow/assets/63149405/d3e18b84-9715-482d-a547-33caa9b7f114)
 
 ![Change Password](https://github.com/bhupindersingh007/workflow/assets/63149405/0885e1bc-ffec-47e3-8039-8d6bbd1cbbe0)
