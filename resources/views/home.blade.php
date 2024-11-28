@@ -3,10 +3,10 @@
 <main>
         
 <!-- Hero Section -->
-<section class="py-5" style="background: linear-gradient(42deg, rgba(0, 0, 0, 0.7), rgb(0 0 0 / 28%)), url('https://github.com/bhupindersingh007/workflow/assets/63149405/a1cb4c88-6fdc-4455-891b-47af9eae940c') center/cover no-repeat;">
-    <div class="container text-white py-5">
-        <h1 class="mb-3 display-2 text-uppercase">Welcome to WORKFLOW</h1>
-        <p class="lead mb-4">Effortless Project Management for your Teams.</p>
+<section class="py-5" style="background: linear-gradient(42deg, rgba(0, 0, 0, 0.7), rgb(0 0 0 / 38%)), url('https://github.com/bhupindersingh007/workflow/assets/63149405/a1cb4c88-6fdc-4455-891b-47af9eae940c') center/cover no-repeat;">
+    <div class="container text-white text-center py-5">
+        <h1 class="mb-3 display-2 text-uppercase">WORKFLOW</h1>
+        <p class="lead mb-4">Simplify Project Management for Your Teams.</p>
         <a class="btn btn-primary btn-lg" href="{{ route('register.create') }}" role="button">Get Started</a>
     </div>
 </section>
@@ -46,7 +46,7 @@
 </section>
 
 <!-- Feature 1 -->
-<section id="feature1" class="bg-light mt-5">
+<section id="feature1" class="bg-light">
     <div class="container py-5">
         <div class="row">
             <div class="col-md-6">
@@ -68,8 +68,8 @@
         <div class="row">
             <div class="col-md-6 pe-lg-4">
                 <h2>Collaborative Task Management</h2>
-                <p class="lead mb-3">Boost team efficiency with Workflow's task collaboration tools. Assign, track, and align seamlessly. Real-time updates and intuitive workflows keep everyone focused. Streamline task management and bid adieu to productivity hurdle</p>
-                <button class="btn btn-primary px-3">Discover More</button>
+                <p class="lead mb-3">Make your team more efficient with Workflow’s task tools. Assign, track, and collaborate effortlessly. Stay updated in real time with simple workflows that keep everyone aligned. Simplify task management and remove productivity roadblocks.</p>
+                <button class="btn btn-primary px-3 mb-4 mb-lg-0">Discover More</button>
             </div>
 
             <div class="col-md-6">
